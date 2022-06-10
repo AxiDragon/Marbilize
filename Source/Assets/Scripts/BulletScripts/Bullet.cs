@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosive : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    float radiusMult = 25f;
-    float explosionForceMult = 500f;
-    float radius, explosionForce;
-
+    public ScriptableBullet bullet;
     void Start()
     {
-        radius = GetComponent<Collider>().bounds.size.magnitude * radiusMult;
-        explosionForce = GetComponent<Collider>().bounds.size.magnitude * explosionForceMult;
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -22,14 +18,14 @@ public class Explosive : MonoBehaviour
 
     void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, bullet.explosionWidth);
 
         foreach(Collider collider in colliders)
         {
             Rigidbody rb = collider.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.AddExplosionForce(explosionForce, transform.position, radius);
+                rb.AddExplosionForce(bullet.explosionForce, transform.position, bullet.explosionWidth);
             }
         }
         Destroy(transform.root.gameObject);
