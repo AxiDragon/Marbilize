@@ -64,13 +64,40 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Swap Bullets"",
+                    ""name"": ""SwapBullets"",
                     ""type"": ""Value"",
                     ""id"": ""b029f1fb-abe2-4c0f-994b-21a9bf2d0824"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraMove"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1f05cb64-7d56-415f-a289-8ddd8222da7a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CameraY"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d98774b3-e74b-4ed0-bb64-4f9f811b39c1"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseTest"",
+                    ""type"": ""Button"",
+                    ""id"": ""f48e8783-0f68-4c54-b69b-13b76384106a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -180,7 +207,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Swap Bullets"",
+                    ""action"": ""SwapBullets"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -191,7 +218,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Player"",
-                    ""action"": ""Swap Bullets"",
+                    ""action"": ""SwapBullets"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -202,9 +229,42 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Player"",
-                    ""action"": ""Swap Bullets"",
+                    ""action"": ""SwapBullets"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54e558ee-807c-4eef-a6db-e3a3d01b7310"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""CameraMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04b15be4-2745-47e1-ab7e-8747394edbc4"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""CameraY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1bdffffc-2177-43ca-ac1c-9d671c307a69"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Player"",
+                    ""action"": ""MouseTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -215,12 +275,12 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
             ""bindingGroup"": ""Player"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<Keyboard>"",
+                    ""devicePath"": ""<Mouse>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<Mouse>"",
+                    ""devicePath"": ""<Keyboard>"",
                     ""isOptional"": false,
                     ""isOR"": false
                 }
@@ -234,7 +294,10 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_SwapBullets = m_Player.FindAction("Swap Bullets", throwIfNotFound: true);
+        m_Player_SwapBullets = m_Player.FindAction("SwapBullets", throwIfNotFound: true);
+        m_Player_CameraMove = m_Player.FindAction("CameraMove", throwIfNotFound: true);
+        m_Player_CameraY = m_Player.FindAction("CameraY", throwIfNotFound: true);
+        m_Player_MouseTest = m_Player.FindAction("MouseTest", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -299,6 +362,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_SwapBullets;
+    private readonly InputAction m_Player_CameraMove;
+    private readonly InputAction m_Player_CameraY;
+    private readonly InputAction m_Player_MouseTest;
     public struct PlayerActions
     {
         private @PlayerController m_Wrapper;
@@ -308,6 +374,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @SwapBullets => m_Wrapper.m_Player_SwapBullets;
+        public InputAction @CameraMove => m_Wrapper.m_Player_CameraMove;
+        public InputAction @CameraY => m_Wrapper.m_Player_CameraY;
+        public InputAction @MouseTest => m_Wrapper.m_Player_MouseTest;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -332,6 +401,15 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @SwapBullets.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapBullets;
                 @SwapBullets.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapBullets;
                 @SwapBullets.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwapBullets;
+                @CameraMove.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraMove;
+                @CameraMove.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraMove;
+                @CameraMove.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraMove;
+                @CameraY.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraY;
+                @CameraY.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraY;
+                @CameraY.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraY;
+                @MouseTest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseTest;
+                @MouseTest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseTest;
+                @MouseTest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseTest;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -351,6 +429,15 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @SwapBullets.started += instance.OnSwapBullets;
                 @SwapBullets.performed += instance.OnSwapBullets;
                 @SwapBullets.canceled += instance.OnSwapBullets;
+                @CameraMove.started += instance.OnCameraMove;
+                @CameraMove.performed += instance.OnCameraMove;
+                @CameraMove.canceled += instance.OnCameraMove;
+                @CameraY.started += instance.OnCameraY;
+                @CameraY.performed += instance.OnCameraY;
+                @CameraY.canceled += instance.OnCameraY;
+                @MouseTest.started += instance.OnMouseTest;
+                @MouseTest.performed += instance.OnMouseTest;
+                @MouseTest.canceled += instance.OnMouseTest;
             }
         }
     }
@@ -371,5 +458,8 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnSwapBullets(InputAction.CallbackContext context);
+        void OnCameraMove(InputAction.CallbackContext context);
+        void OnCameraY(InputAction.CallbackContext context);
+        void OnMouseTest(InputAction.CallbackContext context);
     }
 }

@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraLook : MonoBehaviour
 {
-    public float sensitivity = 100;
+    public float sensitivity = 100f;
+    float xRotation = 0f;
 
     Transform playerBody;
-
-    float xRotation = 0f;
 
     void Start()
     {
@@ -16,16 +16,13 @@ public class CameraLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    public void MoveCamera(InputAction.CallbackContext callback)
     {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        Vector2 rotation = callback.ReadValue<Vector2>() * sensitivity;
 
-        xRotation -= mouseY;
-
+        xRotation -= rotation.y;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        playerBody.Rotate(Vector3.up * mouseX);
+        playerBody.Rotate(Vector3.up * rotation.x);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }

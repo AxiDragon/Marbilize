@@ -7,7 +7,7 @@ public class ScriptableBullet : ScriptableObject
 {
     public string bulletName;
     public int tier;
-    public float explosionForce, spread, speed, explosionWidth;
+    public float explosionForce, spread, speed, explosionWidth, recoil;
     public bool isMelee;
     public Material bulletMaterial;
 }

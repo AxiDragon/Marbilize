@@ -42,13 +42,40 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Swap Bullets",
+                    "name": "SwapBullets",
                     "type": "Value",
                     "id": "b029f1fb-abe2-4c0f-994b-21a9bf2d0824",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "CameraMove",
+                    "type": "PassThrough",
+                    "id": "1f05cb64-7d56-415f-a289-8ddd8222da7a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CameraY",
+                    "type": "PassThrough",
+                    "id": "d98774b3-e74b-4ed0-bb64-4f9f811b39c1",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseTest",
+                    "type": "Button",
+                    "id": "f48e8783-0f68-4c54-b69b-13b76384106a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -158,7 +185,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Swap Bullets",
+                    "action": "SwapBullets",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -169,7 +196,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Player",
-                    "action": "Swap Bullets",
+                    "action": "SwapBullets",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -180,9 +207,42 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Player",
-                    "action": "Swap Bullets",
+                    "action": "SwapBullets",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "54e558ee-807c-4eef-a6db-e3a3d01b7310",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "CameraMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04b15be4-2745-47e1-ab7e-8747394edbc4",
+                    "path": "<Mouse>/delta/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "CameraY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bdffffc-2177-43ca-ac1c-9d671c307a69",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "MouseTest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -193,12 +253,12 @@
             "bindingGroup": "Player",
             "devices": [
                 {
-                    "devicePath": "<Keyboard>",
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 },
                 {
-                    "devicePath": "<Mouse>",
+                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }

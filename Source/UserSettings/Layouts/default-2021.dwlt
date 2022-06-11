@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 9327
+  controlID: 45
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 9328
+  controlID: 46
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 9329
+  controlID: 47
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -217,14 +217,14 @@ MonoBehaviour:
     height: 432.8
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
   - {fileID: 16}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 3
+  m_Selected: 1
+  m_LastSelected: 2
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -244,14 +244,14 @@ MonoBehaviour:
     y: 432.8
     width: 1172.8
     height: 298
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1219,9 +1219,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b4dcffff
-      m_LastClickedID: -9036
-      m_ExpandedIDs: b8dcffff54deffff0adfffff86f4ffff36fbffffee6f0000
+      m_SelectedIDs: c46a0000
+      m_LastClickedID: 27332
+      m_ExpandedIDs: 92f9ffff9af9ffff36fbffffc46a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1322,7 +1322,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 26.400002}
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -1354,8 +1354,8 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 0
-      snapOffset: {x: 0, y: 0}
+      displayed: 1
+      snapOffset: {x: 0, y: 24.8}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Camera
@@ -1470,9 +1470,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.1515045, y: 2.4555678, z: -3.100411}
+    m_Target: {x: 25.51094, y: -5.1122217, z: 35.133835}
     speed: 2
-    m_Value: {x: -2.1515045, y: 2.4555678, z: -3.100411}
+    m_Value: {x: 25.51094, y: -5.1122217, z: 35.133835}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1519,20 +1519,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2724162, y: -0.34286708, z: 0.10459481, w: 0.8929305}
+    m_Target: {x: -0.09957876, y: -0.7336283, z: 0.11025475, w: -0.6631929}
     speed: 2
-    m_Value: {x: 0.27375072, y: -0.34270406, z: 0.10510728, w: 0.892506}
+    m_Value: {x: -0.09957342, y: -0.73358893, z: 0.110248834, w: -0.66315734}
   m_Size:
-    m_Target: 1.4054321
+    m_Target: 12.124355
     speed: 2
-    m_Value: 1.3449111
+    m_Value: 12.124355
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.9805109
-    m_SpeedNormalized: 0.49000046
+    m_Speed: 1.2203908
+    m_SpeedNormalized: 0.6100004
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1601,8 +1601,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -352.16
     m_HBaseRangeMax: 352.16
-    m_VBaseRangeMin: -164.72
-    m_VBaseRangeMax: 164.72
+    m_VBaseRangeMin: -156.31999
+    m_VBaseRangeMax: 156.31999
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1619,11 +1619,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 21
       width: 880.4
-      height: 411.8
+      height: 390.8
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 440.2, y: 205.9}
+    m_Translation: {x: 440.2, y: 195.4}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -1631,9 +1631,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -440.2
-      y: -205.9
+      y: -195.4
       width: 880.4
-      height: 411.8
+      height: 390.8
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1100.5, y: 514.75}
@@ -1694,9 +1694,9 @@ MonoBehaviour:
     m_SearchString: 
   m_ActionsTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3f3c0f71
-    m_LastClickedID: 1896823871
-    m_ExpandedIDs: ac0fb89a61648951
+    m_SelectedIDs: e4189aa9
+    m_LastClickedID: -1449518876
+    m_ExpandedIDs: ac0fb89a121d0df9f2c557f961648951b1d66375
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1718,7 +1718,7 @@ MonoBehaviour:
     m_AdvancedDropdownState:
       states:
       - itemId: 371857150
-        selectedIndex: 3
+        selectedIndex: 2
         scroll: {x: 0, y: 0}
       - itemId: 656259478
         selectedIndex: 0
@@ -1730,7 +1730,7 @@ MonoBehaviour:
         selectedIndex: -1
         scroll: {x: 0, y: 0}
       - itemId: 82801685
-        selectedIndex: 1
+        selectedIndex: 0
         scroll: {x: 0, y: 0}
       - itemId: 101209689
         selectedIndex: -1
@@ -1743,6 +1743,24 @@ MonoBehaviour:
         scroll: {x: 0, y: 0}
       - itemId: -656690626
         selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: -654788001
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: 378383742
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: 917488242
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: 496275792
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: -2022221135
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: -2031660377
+        selectedIndex: 0
         scroll: {x: 0, y: 0}
     m_ManualPathEditMode: 0
   m_ActionAssetManager:
@@ -1768,12 +1786,16 @@ MonoBehaviour:
       \"type\": \"Button\",\n                    \"id\": \"87b97150-abde-4f36-a460-dbcfc9897a8b\",\n                   
       \"expectedControlType\": \"Button\",\n                    \"processors\": \"\",\n                   
       \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
-      },\n                {\n                    \"name\": \"Swap Bullets\",\n                   
+      },\n                {\n                    \"name\": \"SwapBullets\",\n                   
       \"type\": \"Value\",\n                    \"id\": \"b029f1fb-abe2-4c0f-994b-21a9bf2d0824\",\n                   
       \"expectedControlType\": \"Axis\",\n                    \"processors\": \"\",\n                   
       \"interactions\": \"\",\n                    \"initialStateCheck\": true\n               
-      }\n            ],\n            \"bindings\": [\n                {\n                   
-      \"name\": \"\",\n                    \"id\": \"484a0ed5-3a8a-40f4-9e8f-3917f385dfda\",\n                   
+      },\n                {\n                    \"name\": \"CameraMove\",\n                   
+      \"type\": \"Value\",\n                    \"id\": \"1f05cb64-7d56-415f-a289-8ddd8222da7a\",\n                   
+      \"expectedControlType\": \"Vector2\",\n                    \"processors\":
+      \"\",\n                    \"interactions\": \"\",\n                    \"initialStateCheck\":
+      true\n                }\n            ],\n            \"bindings\": [\n               
+      {\n                    \"name\": \"\",\n                    \"id\": \"484a0ed5-3a8a-40f4-9e8f-3917f385dfda\",\n                   
       \"path\": \"<Keyboard>/e\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"Player\",\n                   
       \"action\": \"Shoot\",\n                    \"isComposite\": false,\n                   
@@ -1821,21 +1843,27 @@ MonoBehaviour:
       \"name\": \"SwapBullet\",\n                    \"id\": \"deb96b9c-0d28-4f08-84e3-b1f99c8ab8f2\",\n                   
       \"path\": \"1DAxis\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"\",\n                   
-      \"action\": \"Swap Bullets\",\n                    \"isComposite\": true,\n                   
+      \"action\": \"SwapBullets\",\n                    \"isComposite\": true,\n                   
       \"isPartOfComposite\": false\n                },\n                {\n                   
       \"name\": \"negative\",\n                    \"id\": \"83325a15-4d39-4076-a8f6-af0d4c485dba\",\n                   
       \"path\": \"<Mouse>/backButton\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"Player\",\n                   
-      \"action\": \"Swap Bullets\",\n                    \"isComposite\": false,\n                   
+      \"action\": \"SwapBullets\",\n                    \"isComposite\": false,\n                   
       \"isPartOfComposite\": true\n                },\n                {\n                   
       \"name\": \"positive\",\n                    \"id\": \"6d63978d-62c9-49d6-8616-8cb493920eb7\",\n                   
       \"path\": \"<Mouse>/forwardButton\",\n                    \"interactions\":
       \"\",\n                    \"processors\": \"\",\n                    \"groups\":
-      \"Player\",\n                    \"action\": \"Swap Bullets\",\n                   
+      \"Player\",\n                    \"action\": \"SwapBullets\",\n                   
       \"isComposite\": false,\n                    \"isPartOfComposite\": true\n               
-      }\n            ]\n        }\n    ],\n    \"controlSchemes\": [\n        {\n           
-      \"name\": \"Player\",\n            \"bindingGroup\": \"Player\",\n           
-      \"devices\": [\n                {\n                    \"devicePath\": \"<Keyboard>\",\n                   
+      },\n                {\n                    \"name\": \"\",\n                   
+      \"id\": \"54e558ee-807c-4eef-a6db-e3a3d01b7310\",\n                    \"path\":
+      \"<Mouse>/delta\",\n                    \"interactions\": \"\",\n                   
+      \"processors\": \"\",\n                    \"groups\": \"\",\n                   
+      \"action\": \"CameraMove\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
+      ],\n    \"controlSchemes\": [\n        {\n            \"name\": \"Player\",\n           
+      \"bindingGroup\": \"Player\",\n            \"devices\": [\n               
+      {\n                    \"devicePath\": \"<Keyboard>\",\n                   
       \"isOptional\": false,\n                    \"isOR\": false\n               
       },\n                {\n                    \"devicePath\": \"<Mouse>\",\n                   
       \"isOptional\": false,\n                    \"isOR\": false\n               
@@ -1903,23 +1931,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Shaders
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Shaders
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Axi\Pictures\Art\HKU\Jaar 1\Game Mechanics through Board
     Games\Marbilize\Source
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1c6e0000
-    m_LastClickedID: 28188
-    m_ExpandedIDs: 00000000ee6a000008780000d478000000ca9a3b
+    scrollPos: {x: 0, y: 95}
+    m_SelectedIDs: 806b0000
+    m_LastClickedID: 27520
+    m_ExpandedIDs: 000000007c6b00007e6b0000806b0000106d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1947,7 +1975,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ee6a000008780000d478000000ca9a3b
+    m_ExpandedIDs: 000000007c6b00007e6b0000806b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1972,9 +2000,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 9af9ffff
+    m_LastClickedInstanceID: -1638
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000827a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2066,7 +2094,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 2417.6
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
