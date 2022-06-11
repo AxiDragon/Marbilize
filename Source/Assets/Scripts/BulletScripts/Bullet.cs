@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public ScriptableBullet bullet;
-    void Start()
-    {
-
-    }
+    ScriptableBullet bulletStats;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -18,16 +14,18 @@ public class Bullet : MonoBehaviour
 
     void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, bullet.explosionWidth);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, bulletStats.explosionWidth);
 
         foreach(Collider collider in colliders)
         {
             Rigidbody rb = collider.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                rb.AddExplosionForce(bullet.explosionForce, transform.position, bullet.explosionWidth);
+                rb.AddExplosionForce(bulletStats.explosionForce, transform.position, bulletStats.explosionWidth);
             }
         }
         Destroy(transform.root.gameObject);
     }
+
+    public void AssignStats(ScriptableBullet attachment) => bulletStats = attachment;
 }

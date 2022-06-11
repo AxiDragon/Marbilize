@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea0e774abc319d4da60adf937377080, type: 3}
-  m_Name: DefaultBullet1 1
+  m_Name: Punch1
   m_EditorClassIdentifier: 
-  bulletName: Regular Shot
+  bulletName: Recoil Shot (1)
   tier: 1
+  index: 2
   explosionForce: 250
   spread: 15
-  speed: 0
+  speed: 2
   explosionWidth: 12
-  isMelee: 0
+  recoil: 5
+  isMelee: 1
   bulletMaterial: {fileID: 0}

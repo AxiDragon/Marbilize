@@ -33,10 +33,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * moveVector * speed;
+        Vector3 movement = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * moveVector * speed / 2f;
+        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+        //rb.MovePosition(rb.position + movement);
+        //rb.AddForce(movement * 25f);
         rb.angularVelocity = Vector3.zero;
-        rb.MovePosition(rb.position + movement);
-        rb.AddForce(movement * 2f);
     }
 
     public void Jump(InputAction.CallbackContext callback)
@@ -57,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canDash && callback.action.WasPerformedThisFrame())
         {
-            canDash = false;
             rb.AddForce(transform.forward * speed * dashForce, ForceMode.Impulse);
             StartCoroutine(Cooldown());
         }
@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Cooldown()
     {
+        canDash = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }

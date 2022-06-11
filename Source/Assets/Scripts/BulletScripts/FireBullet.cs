@@ -8,6 +8,8 @@ public class FireBullet : MonoBehaviour
     public GameObject bulletGameobject;
     Bullet firedBullet;
     Rigidbody rb;
+    bool fired = false;
+    float fireCooldown = .1f;
 
     void Start()
     {
@@ -15,13 +17,28 @@ public class FireBullet : MonoBehaviour
         rb = transform.root.GetComponentInChildren<Rigidbody>();
     }
 
-    public void ShootBullet()
+    public void ShootBullet(ScriptableBullet bullet)
     {
-        Vector3 firingDirection = Quaternion.AngleAxis(Random.Range(-firedBullet.bullet.spread, firedBullet.bullet.speed), transform.up)
+        if (!fired)
+            return;
+
+        StartCoroutine(Cooldown());
+
+        Vector3 firingDirection = Quaternion.AngleAxis(Random.Range(-bullet.spread, 
+            bullet.speed), transform.up)
             * transform.forward;
 
+        Debug.DrawRay(transform.position, firingDirection * 5f, Color.red, 5f);
+
         GameObject shot = Instantiate(bulletGameobject, transform.position + firingDirection, Quaternion.identity);
-        shot.GetComponent<Rigidbody>().AddForce(firingDirection * firedBullet.bullet.speed, ForceMode.Impulse);
-        rb.AddForce(-firingDirection * firedBullet.bullet.recoil, ForceMode.Impulse);
+        shot.GetComponent<Rigidbody>().AddForce(firingDirection * bullet.speed, ForceMode.Impulse);
+        rb.AddForce(-firingDirection * bullet.recoil, ForceMode.Impulse);
+    }
+
+    IEnumerator Cooldown()
+    {
+        fired = true;
+        yield return new WaitForSeconds(fireCooldown);
+        fired = false;
     }
 }
