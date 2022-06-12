@@ -20,7 +20,7 @@ public class BulletInventory : MonoBehaviour
     void Start()
     {
         bulletInventory.Add(null);
-        bulletInventory.Clear(); 
+        bulletInventory.Clear();
         usedBulletInventory.Add(null);
         usedBulletInventory.Clear();
         fireBullet = FindObjectOfType<FireBullet>();
@@ -29,17 +29,18 @@ public class BulletInventory : MonoBehaviour
 
     public void UpdateCurrentBullet(InputAction.CallbackContext callback)
     {
-        if (roundBullets.Count == 0)
+        float input = callback.action.ReadValue<float>();
+
+        if (roundBullets.Count == 0 || input == 0f)
             return;
 
-        float input = callback.action.ReadValue<float>();
 
         switch (input)
         {
-            case var _ when input < 0:
+            case var _ when input < 0f:
                 current--;
                 break;
-            case var _ when input > 0:
+            case var _ when input > 0f:
                 current++;
                 break;
         }
@@ -47,9 +48,7 @@ public class BulletInventory : MonoBehaviour
         current = LoopCurrentBullet();
 
         if (bulletText)
-        {
-            bulletText.ChangeBulletText(roundBullets[current].bulletName);
-        }
+            bulletText.UpdateBulletText(roundBullets[current].bulletName, roundBullets[current].tier);
     }
 
     private int LoopCurrentBullet()
@@ -73,10 +72,11 @@ public class BulletInventory : MonoBehaviour
         DiscardFromRound(current);
         current = LoopCurrentBullet();
 
-        bulletText.ChangeBulletText(roundBullets[current].bulletName);
 
         if (roundBullets.Count == 0)
-            bulletText.ChangeBulletText("None");
+            bulletText.UpdateBulletText("None", 0);
+        else
+            bulletText.UpdateBulletText(roundBullets[current].bulletName, roundBullets[current].tier);
     }
 
     public void AddToInventory(ScriptableBullet selection)

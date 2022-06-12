@@ -6,15 +6,23 @@ using TMPro;
 
 public class Health : MonoBehaviour
 {
-    public float health = 10f;
+    public float maxHealth = 10f;
+    float health;
     Timer timer;
+    Image image;
+    Color startColor;
+    Color endColor = Color.gray;
 
     bool healthUp = false;
 
     private void Start()
     {
+        health = maxHealth;
+
         timer = FindObjectOfType<Timer>();
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
+        image = GetComponentInChildren<Image>();
+        startColor = texts[0].color;
 
         foreach (TextMeshProUGUI text in texts)
             text.text = health.ToString("F1");
@@ -25,16 +33,22 @@ public class Health : MonoBehaviour
         if (timer.timeLeft == 0f && !healthUp)
         {
             health -= Time.deltaTime;
+            Color color = Color.Lerp(endColor, startColor, health / maxHealth);
 
             TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
 
             foreach (TextMeshProUGUI text in texts)
+            {
                 text.text = health.ToString("F1");
+                text.color = color;
+            }
+
+            image.color = color;
         }
 
         if (health <= 0f && !healthUp)
         {
-            healthUp = false;
+            healthUp = true;
             GameOver();
         }
     }

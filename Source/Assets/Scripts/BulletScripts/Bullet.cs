@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     ScriptableBullet bulletStats;
-
+    public GameObject explosion;
     void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag != "Player")
@@ -29,7 +29,8 @@ public class Bullet : MonoBehaviour
 
             rb.AddExplosionForce(bulletStats.explosionForce, transform.position, bulletStats.explosionWidth);
         }
-
+        
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(transform.root.gameObject);
     }
 

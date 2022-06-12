@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 1770802678527710208}
   - component: {fileID: 8484111986141255563}
   m_Layer: 8
-  m_Name: Camera
+  m_Name: POVCamera
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1950,7 +1950,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
