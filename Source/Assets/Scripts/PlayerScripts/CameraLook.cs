@@ -14,7 +14,7 @@ public class CameraLook : MonoBehaviour
 
     void Start()
     {
-        startRot = head.transform.eulerAngles;
+        startRot = head.transform.localEulerAngles;
         playerBody = transform.parent;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -27,6 +27,6 @@ public class CameraLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         playerBody.Rotate(Vector3.up * rotation.x);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        head.transform.rotation = Quaternion.Euler(startRot.x - xRotation, 0f, 0f);
+        head.transform.localRotation = Quaternion.Euler(startRot.x + xRotation, startRot.y, startRot.z);
     }
 }

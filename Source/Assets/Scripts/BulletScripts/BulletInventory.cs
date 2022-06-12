@@ -5,50 +5,84 @@ using UnityEngine.InputSystem;
 
 public class BulletInventory : MonoBehaviour
 {
-    List<ScriptableBullet> bulletInventory = new List<ScriptableBullet>(); 
+    List<ScriptableBullet> bulletInventory = new List<ScriptableBullet>();
     List<ScriptableBullet> usedBulletInventory = new List<ScriptableBullet>();
-    List<ScriptableBullet> roundBullets= new List<ScriptableBullet>(); 
+    List<ScriptableBullet> roundBullets = new List<ScriptableBullet>();
 
     public static int MaxRound = 3;
     public static int MaxBulletsInventory = 9;
     int current = 0;
 
     FireBullet fireBullet;
+    public BulletArray bulletArray;
+    BulletText bulletText;
 
-    private void Start()
+    void Start()
     {
+        bulletInventory.Add(null);
+        bulletInventory.Clear(); 
+        usedBulletInventory.Add(null);
+        usedBulletInventory.Clear();
         fireBullet = FindObjectOfType<FireBullet>();
+        bulletText = FindObjectOfType<BulletText>();
     }
 
     public void UpdateCurrentBullet(InputAction.CallbackContext callback)
     {
-        float input = callback.ReadValue<float>();
+        if (roundBullets.Count == 0)
+            return;
+
+        float input = callback.action.ReadValue<float>();
 
         switch (input)
         {
             case var _ when input < 0:
                 current--;
-                if (current < 0)
-                    current = 2;
                 break;
             case var _ when input > 0:
                 current++;
-                if (current > roundBullets.Count - 1)
-                    current = 0;
                 break;
         }
+
+        current = LoopCurrentBullet();
+
+        if (bulletText)
+        {
+            bulletText.ChangeBulletText(roundBullets[current].bulletName);
+        }
+    }
+
+    private int LoopCurrentBullet()
+    {
+        if (roundBullets.Count == 0)
+            return 0;
+
+        int output;
+        output = current % (roundBullets.Count);
+        if (output < 0)
+            output = roundBullets.Count - 1;
+        return output;
     }
 
     public void FireBullet(InputAction.CallbackContext callback)
     {
-        if (!callback.action.WasPressedThisFrame())
-                return;
+        if (!callback.action.WasPressedThisFrame() || fireBullet.fired || roundBullets.Count == 0)
+            return;
 
         fireBullet.ShootBullet(roundBullets[current]);
         DiscardFromRound(current);
+        current = LoopCurrentBullet();
+
+        bulletText.ChangeBulletText(roundBullets[current].bulletName);
+
+        if (roundBullets.Count == 0)
+            bulletText.ChangeBulletText("None");
     }
 
-    public void AddToInventory(ScriptableBullet selection) => bulletInventory.Add(selection);
+    public void AddToInventory(ScriptableBullet selection)
+    {
+        bulletInventory.Add(selection);
+    }
     public void RemoveFromInventory(int selection) => bulletInventory.RemoveAt(selection);
     public void AddToRoundFromInventory(int selection)
     {
@@ -64,8 +98,7 @@ public class BulletInventory : MonoBehaviour
     public void RemoveFromRound(int selection) => bulletInventory.RemoveAt(selection);
     public void TestRound()
     {
-        bulletInventory.Add(bulletInventory[0]);
-        bulletInventory.Add(bulletInventory[0]);
-        bulletInventory.Add(bulletInventory[0]);
+        for (int i = 0; i < bulletInventory.Count; i++)
+            roundBullets.Add(bulletInventory[i]);
     }
 }

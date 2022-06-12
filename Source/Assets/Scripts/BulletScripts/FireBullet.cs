@@ -6,33 +6,43 @@ using UnityEngine.InputSystem;
 public class FireBullet : MonoBehaviour
 {
     public GameObject bulletGameobject;
-    Bullet firedBullet;
+    PlayerMovement movement;
     Rigidbody rb;
-    bool fired = false;
+    public bool fired = false;
     float fireCooldown = .1f;
 
     void Start()
     {
-        firedBullet = bulletGameobject.GetComponent<Bullet>();
         rb = transform.root.GetComponentInChildren<Rigidbody>();
+        movement = rb.GetComponent<PlayerMovement>();
     }
 
     public void ShootBullet(ScriptableBullet bullet)
     {
-        if (!fired)
-            return;
-
         StartCoroutine(Cooldown());
 
         Vector3 firingDirection = Quaternion.AngleAxis(Random.Range(-bullet.spread, 
             bullet.speed), transform.up)
             * transform.forward;
 
-        Debug.DrawRay(transform.position, firingDirection * 5f, Color.red, 5f);
-
         GameObject shot = Instantiate(bulletGameobject, transform.position + firingDirection, Quaternion.identity);
+        
+        Bullet bulletScript = shot.GetComponent<Bullet>();
+
+        bulletScript.AssignStats(bullet);
+
+        shot.GetComponent<SphereCollider>().radius = bullet.collisionRadius;
+
+        if (bullet.isMelee)
+            bulletScript.Explode();
+        
         shot.GetComponent<Rigidbody>().AddForce(firingDirection * bullet.speed, ForceMode.Impulse);
-        rb.AddForce(-firingDirection * bullet.recoil, ForceMode.Impulse);
+
+        Material mat = shot.GetComponentInChildren<MeshRenderer>().material;
+        mat.SetTexture("_MainTex", bullet.bulletSprite);
+        mat.SetFloat("_Tier", bullet.tier);
+
+        StartCoroutine(movement.Recoil(Vector3.Scale(-firingDirection * bullet.recoil, new Vector3(1f, .3f, 1f))));
     }
 
     IEnumerator Cooldown()

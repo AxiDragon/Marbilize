@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    PlayerController controller;
+    public PlayerController controller;
     Rigidbody rb;
     Transform sphereCheckPos;
     LayerMask groundMask;
     
-    Vector3 moveVector;
-    public float speed, jumpForce, groundDistance, dashCooldown, dashForce;
+    Vector3 moveVector, dashMove, recoilMove;
+    public float speed, jumpForce, groundDistance, dashCooldown, dashForce, dashDuration, recoilDuration;
     bool isGrounded;
     bool canDash = true;
 
@@ -34,9 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * moveVector * speed / 2f;
-        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
-        //rb.MovePosition(rb.position + movement);
-        //rb.AddForce(movement * 25f);
+        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z) + dashMove + recoilMove;
         rb.angularVelocity = Vector3.zero;
     }
 
@@ -58,18 +56,42 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canDash && callback.action.WasPerformedThisFrame())
         {
-            rb.AddForce(transform.forward * speed * dashForce, ForceMode.Impulse);
-            StartCoroutine(Cooldown());
+            StartCoroutine(Dash(transform.forward * speed * dashForce));
         }
     }
 
     public void EnableMove() => controller.Player.Enable();
     public void DisableMove() => controller.Player.Disable();
 
-    IEnumerator Cooldown()
+    IEnumerator Dash(Vector3 force)
     {
         canDash = false;
+        float timer = 0f;
+
+        while (timer < dashDuration)
+        {
+            dashMove = Vector3.Lerp(force, Vector3.zero, timer / dashDuration);
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        dashMove = Vector3.zero;
+
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    public IEnumerator Recoil(Vector3 force)
+    {
+        float timer = 0f;
+
+        while (timer < recoilDuration)
+        {
+            recoilMove = Vector3.Lerp(force, Vector3.zero, timer / recoilDuration);
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        recoilMove = Vector3.zero;
     }
 }

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea0e774abc319d4da60adf937377080, type: 3}
   m_Name: Punch1
   m_EditorClassIdentifier: 
-  bulletName: Recoil Shot (1)
+  bulletName: Punch (1)
   tier: 1
-  index: 2
-  explosionForce: 250
-  spread: 15
-  speed: 2
-  explosionWidth: 12
-  recoil: 5
+  explosionForce: 1600
+  spread: 5
+  speed: 3
+  explosionWidth: 3
+  recoil: 2
+  collisionRadius: 0.15
   isMelee: 1
-  bulletMaterial: {fileID: 0}
+  affectsPlayer: 0
+  bulletSprite: {fileID: 2800000, guid: 885776e1a337a35458887d21d539d016, type: 3}

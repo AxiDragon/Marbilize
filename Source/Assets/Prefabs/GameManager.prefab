@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1348597436178640077}
   - component: {fileID: 1348597436178640076}
   - component: {fileID: 1348597436178640079}
-  - component: {fileID: 709881967612740864}
   - component: {fileID: 1893046540410932856}
   m_Layer: 0
   m_Name: GameManager
@@ -89,18 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674d4ea9fe1813a428be72980d92a011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &709881967612740864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348597436178640074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 664f006486babdc4fa15c6b740b11042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1893046540410932856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +106,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25341c6fec1d5a84cb4a636d463fe928, type: 2}
   Tier3Bullets:
   - {fileID: 11400000, guid: 002e99a32e73a1d489661952ddf0b5a1, type: 2}
+  inventory: {fileID: 0}
