@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
         image = GetComponentInChildren<Image>();
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
         startColor = texts[0].color;
-        StartCoroutine(SetTimer(10f));
+        StartCoroutine(SetTimer(2f));
     }
 
     public IEnumerator SetTimer(float targetTime)

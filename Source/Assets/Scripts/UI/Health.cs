@@ -7,13 +7,16 @@ using TMPro;
 public class Health : MonoBehaviour
 {
     public float maxHealth = 10f;
+    float heartbeatTime = 0.3f;
     float health;
     Timer timer;
     Image image;
     Color startColor;
     Color endColor = Color.gray;
+    Vector3 imageStartScale, textStartScale;
 
     bool healthUp = false;
+    bool beating = false;
 
     private void Start()
     {
@@ -23,6 +26,8 @@ public class Health : MonoBehaviour
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
         image = GetComponentInChildren<Image>();
         startColor = texts[0].color;
+        imageStartScale = image.transform.localScale;
+        textStartScale = texts[0].transform.localScale;
 
         foreach (TextMeshProUGUI text in texts)
             text.text = health.ToString("F1");
@@ -44,6 +49,14 @@ public class Health : MonoBehaviour
             }
 
             image.color = color;
+
+            if (!beating)
+            {
+                StartCoroutine(Cooldown());
+                StartCoroutine(UIManager.Feedback(new GameObject[] { image.gameObject, texts[0].gameObject }, heartbeatTime, 
+                    new Vector3[] { imageStartScale, textStartScale }));
+            }
+
         }
 
         if (health <= 0f && !healthUp)
@@ -51,6 +64,7 @@ public class Health : MonoBehaviour
             healthUp = true;
             GameOver();
         }
+
     }
 
     void GameOver()
@@ -62,5 +76,17 @@ public class Health : MonoBehaviour
 
         foreach (TextMeshProUGUI text in texts)
             text.text = health.ToString("F1");
+    }
+
+    IEnumerator Cooldown()
+    {
+        beating = true;
+        float timer = 0f;
+        while (timer < heartbeatTime)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        beating = false;
     }
 }
