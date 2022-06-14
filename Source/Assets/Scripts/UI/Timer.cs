@@ -6,21 +6,47 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float timeLeft, fullColorTime;
+    public float timeLeft;
+    public float TimeLeft
+    {
+        get { return timeLeft; }
+        set 
+        { 
+            timeLeft = value;
+
+            if (!countingDown)
+                StartCoroutine(SetTimer(timeLeft));
+        }
+    }
+
+    public float fullColorTime;
     Image image;
     Color startColor;
     Color endColor = Color.gray;
+    bool countingDown;
 
     private void Start()
     {
         image = GetComponentInChildren<Image>();
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
         startColor = texts[0].color;
-        StartCoroutine(SetTimer(2f));
+        StartCoroutine(SetTimer(timeLeft));
+    }
+
+    public void GetTime(float increment)
+    {
+        TimeLeft += increment;
+    }
+
+    public void GetClearZoneTime()
+    {
+        TimeLeft += (25 - Mathf.Sqrt(LevelStats.Difficulty));
     }
 
     public IEnumerator SetTimer(float targetTime)
     {
+        countingDown = true;
+
         timeLeft = targetTime;
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
 
@@ -45,5 +71,7 @@ public class Timer : MonoBehaviour
         {
             text.text = timeLeft.ToString("F2");
         }
+
+        countingDown = false;
     }
 }

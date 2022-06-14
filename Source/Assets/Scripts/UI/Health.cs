@@ -8,7 +8,8 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 10f;
     float heartbeatTime = 0.3f;
-    float health;
+    [HideInInspector]
+    public float health;
     Timer timer;
     Image image;
     Color startColor;
@@ -37,26 +38,7 @@ public class Health : MonoBehaviour
     {
         if (timer.timeLeft == 0f && !healthUp)
         {
-            health -= Time.deltaTime;
-            Color color = Color.Lerp(endColor, startColor, health / maxHealth);
-
-            TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
-
-            foreach (TextMeshProUGUI text in texts)
-            {
-                text.text = health.ToString("F1");
-                text.color = color;
-            }
-
-            image.color = color;
-
-            if (!beating)
-            {
-                StartCoroutine(Cooldown());
-                StartCoroutine(UIManager.Feedback(new GameObject[] { image.gameObject, texts[0].gameObject }, heartbeatTime, 
-                    new Vector3[] { imageStartScale, textStartScale }));
-            }
-
+            DepleteHealth(1f);
         }
 
         if (health <= 0f && !healthUp)
@@ -65,6 +47,29 @@ public class Health : MonoBehaviour
             GameOver();
         }
 
+    }
+
+    public void DepleteHealth(float rate)
+    {
+        health -= Time.deltaTime * rate;
+        Color color = Color.Lerp(endColor, startColor, health / maxHealth);
+
+        TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
+
+        foreach (TextMeshProUGUI text in texts)
+        {
+            text.text = health.ToString("F1");
+            text.color = color;
+        }
+
+        image.color = color;
+
+        if (!beating)
+        {
+            StartCoroutine(Cooldown());
+            StartCoroutine(UIManager.Feedback(new GameObject[] { image.gameObject, texts[0].gameObject }, heartbeatTime,
+                new Vector3[] { imageStartScale, textStartScale }));
+        }
     }
 
     void GameOver()

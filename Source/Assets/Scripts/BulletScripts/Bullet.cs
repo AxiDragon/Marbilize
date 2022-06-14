@@ -27,6 +27,12 @@ public class Bullet : MonoBehaviour
             if (!bulletStats.affectsPlayer && rb.tag == "Player")
                 continue;
 
+            if (rb.gameObject.layer == 11)
+                rb.gameObject.layer = 3;
+
+            if (rb.name.Contains("Token") && rb.GetComponent<ObstacleInstance>())
+                rb.GetComponent<ObstacleInstance>().Explode();
+
             rb.AddExplosionForce(bulletStats.explosionForce, transform.position, bulletStats.explosionWidth);
         }
         

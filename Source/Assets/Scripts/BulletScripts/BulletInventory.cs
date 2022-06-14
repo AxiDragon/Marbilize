@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class BulletInventory : MonoBehaviour
 {
-    List<ScriptableBullet> bulletInventory = new List<ScriptableBullet>();
-    List<ScriptableBullet> usedBulletInventory = new List<ScriptableBullet>();
-    List<ScriptableBullet> roundBullets = new List<ScriptableBullet>();
+    public List<ScriptableBullet> bulletInventory = new List<ScriptableBullet>();
+    public List<ScriptableBullet> usedBulletInventory = new List<ScriptableBullet>();
+    public List<ScriptableBullet> roundBullets = new List<ScriptableBullet>();
 
     public static int MaxRound = 3;
     public static int MaxBulletsInventory = 9;
@@ -16,6 +16,8 @@ public class BulletInventory : MonoBehaviour
     FireBullet fireBullet;
     public BulletArray bulletArray;
     BulletText bulletText;
+    [SerializeField]
+    BulletInventoryUI bulletInventoryUI;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class BulletInventory : MonoBehaviour
         usedBulletInventory.Clear();
         fireBullet = FindObjectOfType<FireBullet>();
         bulletText = FindObjectOfType<BulletText>();
+        //bulletInventoryUI = FindObjectOfType<BulletInventoryUI>();
     }
 
     public void UpdateCurrentBullet(InputAction.CallbackContext callback)
@@ -82,8 +85,16 @@ public class BulletInventory : MonoBehaviour
     public void AddToInventory(ScriptableBullet selection)
     {
         bulletInventory.Add(selection);
+        if (bulletInventoryUI != null)
+            bulletInventoryUI.UpdateUI(bulletInventory);
+        else
+            print("Bullet inventory is null");
     }
-    public void RemoveFromInventory(int selection) => bulletInventory.RemoveAt(selection);
+    public void RemoveFromInventory(int selection)
+    {
+        bulletInventoryUI.UpdateUI(bulletInventory);
+        bulletInventory.RemoveAt(selection);
+    }
     public void AddToRoundFromInventory(int selection)
     {
         roundBullets.Add(bulletInventory[selection]);

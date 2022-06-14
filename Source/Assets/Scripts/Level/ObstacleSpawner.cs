@@ -6,68 +6,102 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstacle;
+    public Obstacle[] obstacleArray;
+    public Obstacle tokenBox;
+    public float startingWidth = 10f;
+    float tokenBoxChance = 0.01f;
     int obstaclePoints;
     Vector3 dev;
-    Collider coll;
+    BoxCollider coll;
+    LayerMask ignoreLayer;
 
     void Start()
     {
+        LevelStats.CurrentZone = transform.root.gameObject;
         obstaclePoints = LevelStats.Difficulty;
-        coll = GetComponent<Collider>();
+        coll = GetComponent<BoxCollider>();
+        coll.size = new Vector3(coll.size.x, coll.size.y, startingWidth + Mathf.Sqrt(obstaclePoints));
         dev = coll.bounds.extents;
+        ignoreLayer = LayerMask.GetMask("Ignore Raycast");
         SpawnObstacles();
     }
 
     private void SpawnObstacles()
     {
-        List<Obstacle> obstacles = Resources.LoadAll<Obstacle>("").ToList();
-        print(obstacles.Count);
+        List<Obstacle> obstacles = obstacleArray.ToList();
+        int tokensSpawned = 0;
 
-        for (int i = 0; i < obstacles.Count; i++)
-        {
-            print(obstacles[i]);
-        }
-
-        while (obstacles.Count > 0 || obstaclePoints != 0)
+        while (obstacles.Count > 0 && obstaclePoints != 0)
         {
             for (int i = 0; i < obstacles.Count; i++)
             {
                 if (obstacles[i].cost > obstaclePoints)
-                    obstacles.RemoveAt(i);   
+                    obstacles.RemoveAt(i);
             }
 
-            int randomObstacle = Random.Range(0, obstacles.Count - 1);
-            SpawnObstacle(obstacles[randomObstacle]);
+            if (obstacles.Count > 0)
+            {
+                float random = Random.Range(0f, 1f);
+
+                if (random < tokenBoxChance && tokensSpawned < 1)
+                {
+                    tokensSpawned++;
+                    SpawnObstacle(tokenBox);
+                }
+                else
+                {
+                    int randomObstacle = Random.Range(0, obstacles.Count);
+                    SpawnObstacle(obstacles[randomObstacle]);
+                }
+
+            }
         }
     }
 
     private void SpawnObstacle(Obstacle obs)
     {
-        obstaclePoints -= obs.cost;
-        Vector3 randomPosition;
+        Vector3 randomPosition = GetRandomPosition();
+        Vector3 finalPosition;
 
-        while (true)
+        RaycastHit hit;
+        Ray ray = new Ray(randomPosition + Vector3.up * 100f, Vector3.down);
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~ignoreLayer))
         {
-            randomPosition = transform.position + 
-                new Vector3(Random.Range(-dev.x, dev.x), 100f, Random.Range(-dev.z, dev.z));
+            obstaclePoints -= obs.cost;
 
-            if (IsInside(randomPosition))
-                break;
+            finalPosition = hit.point + Vector3.up * obs.size.y;
+            Debug.DrawLine(transform.position, hit.point, Color.red, 15f);
+
+            GameObject obstacleInstance = Instantiate(obstacle, finalPosition, Quaternion.identity);
+
+            obstacleInstance.transform.localScale = obs.size;
+            obstacleInstance.GetComponent<ObstacleInstance>().AssignObstacleStats(obs);
+            obstacleInstance.GetComponent<Rigidbody>().mass = obs.mass;
+            obstacleInstance.GetComponent<MeshRenderer>().material.SetTexture("_BaseTexture", obs.texture);
+            obstacle.name = obs.name;
         }
-
-
-
-        GameObject obstacleInstance = Instantiate(obstacle, randomPosition, Quaternion.identity);
-
-        obstacleInstance.transform.localScale = obs.size;
-        obstacleInstance.GetComponent<ObstacleInstance>().AssignObstacleStats(obs);
-        obstacleInstance.GetComponent<Rigidbody>().mass = obs.mass;
-        obstacleInstance.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", obs.texture);
     }
 
     bool IsInside(Vector3 point)
     {
         Vector3 closest = coll.ClosestPoint(point);
         return closest == point;
+    }
+
+    Vector3 GetRandomPosition()
+    {
+        bool isInside = false;
+        Vector3 randomPos = Vector3.zero;
+
+        while (!isInside)
+        {
+            randomPos = transform.position +
+                new Vector3(Random.Range(-dev.x, dev.x), 0f, Random.Range(-dev.z, dev.z));
+
+            isInside = IsInside(randomPos);
+        }
+
+        return randomPos;
     }
 }

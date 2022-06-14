@@ -8,9 +8,10 @@ public class Safebox : MonoBehaviour
     Timer timer;
     private void Start()
     {
-        startPos = transform.root.Find("StartPosition").gameObject;
+        startPos = LevelStats.CurrentZone.transform.Find("StartPosition").gameObject;
         timer = FindObjectOfType<Timer>();
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")

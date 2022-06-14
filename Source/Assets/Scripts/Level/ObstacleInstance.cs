@@ -19,7 +19,7 @@ public class ObstacleInstance : MonoBehaviour
             Explode();
     }
 
-    private void Explode()
+    public void Explode()
     {
         if (obs.tokenBox)
             Instantiate(token, transform.position, Quaternion.identity);
@@ -28,5 +28,10 @@ public class ObstacleInstance : MonoBehaviour
         Destroy(transform.root.gameObject);
     }
 
-    public void AssignObstacleStats(Obstacle stats) => obs = stats;
+    public void AssignObstacleStats(Obstacle stats)
+    {
+        obs = stats;
+        if (obs.tokenBox)
+            name = "TokenBox";
+    }
 }

@@ -20,10 +20,18 @@ public class BulletArray : MonoBehaviour
 
     void InitializeInventory(int tier1Bullets, int tier2Bullets, int tier3Bullets)
     {
-        inventory.AddToInventory(bullet[0][4]);
         InitializeInventoryTier(tier1Bullets, bullet[0][0]);
         InitializeInventoryTier(tier2Bullets, bullet[1][0]);
         InitializeInventoryTier(tier3Bullets, bullet[2][0]);
+
+        //Testing
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    for (int j = 0; j < 5; j++)
+        //    {
+        //        InitializeInventoryTier(tier1Bullets, bullet[i][j]);
+        //    }
+        //}
     }
 
     void InitializeInventoryTier(int amount, ScriptableBullet type)

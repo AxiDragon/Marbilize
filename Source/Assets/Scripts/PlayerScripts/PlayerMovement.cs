@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public PlayerController controller;
     Rigidbody rb;
     Transform sphereCheckPos;
-    LayerMask groundMask;
-    
+    public LayerMask groundMask;
+
     Vector3 moveVector, dashMove, recoilMove;
     public float speed, jumpForce, groundDistance, dashCooldown, dashForce, dashDuration, recoilDuration;
     bool isGrounded;
@@ -19,9 +19,8 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = new PlayerController();
         rb = GetComponent<Rigidbody>();
-        groundMask = LayerMask.GetMask("Ground");
 
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             if (child.name == "GroundCheck")
             {

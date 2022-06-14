@@ -8,6 +8,7 @@ public class FireBullet : MonoBehaviour
     public GameObject bulletGameobject;
     PlayerMovement movement;
     Rigidbody rb;
+    [HideInInspector]
     public bool fired = false;
     float fireCooldown = .1f;
 
@@ -39,7 +40,7 @@ public class FireBullet : MonoBehaviour
         shot.GetComponent<Rigidbody>().AddForce(firingDirection * bullet.speed, ForceMode.Impulse);
 
         Material mat = shot.GetComponentInChildren<MeshRenderer>().material;
-        mat.SetTexture("_MainTex", bullet.bulletSprite);
+        mat.SetTexture("_MainTex", bullet.bulletSprite.texture);
         mat.SetFloat("_Tier", bullet.tier);
 
         StartCoroutine(movement.Recoil(Vector3.Scale(-firingDirection * bullet.recoil, new Vector3(1f, .3f, 1f))));

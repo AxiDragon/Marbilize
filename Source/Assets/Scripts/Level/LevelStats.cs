@@ -4,13 +4,45 @@ using UnityEngine;
 
 public class LevelStats : MonoBehaviour
 {
-    public static int ZonesCompleted = 0;
-    public static int AreasCompleted = 0;
-    public static int Difficulty = 5;
+    private static int zonesCompleted = 0;
+    public static int ZonesCompleted
+    {
+        get { return zonesCompleted; }
+        set
+        {
+            zonesCompleted = value;
+
+            if (zonesCompleted % 9 == 0)
+                areasCompleted++;
+
+            CalculateDifficulty();
+        }
+    }
+
+    private static int areasCompleted = 0;
+    public static int AreasCompleted
+    {
+        get { return areasCompleted; }
+        set
+        {
+            areasCompleted = value;
+            CalculateDifficulty();
+        }
+    }
+
+    public static int Difficulty = 25;
+    public static GameObject CurrentZone;
+
+    private void Start()
+    {
+        Difficulty = 25;
+        ZonesCompleted = 0;
+        AreasCompleted = 0;
+    }
 
     public static void CalculateDifficulty()
     {
-        Difficulty = 5 + (AreasCompleted * ZonesCompleted);
+        Difficulty = 25 + (AreasCompleted * ZonesCompleted);
     }
 
     public static void CheckList<T>(List<T> list)
