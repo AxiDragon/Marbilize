@@ -5,17 +5,28 @@ using UnityEngine.Events;
 
 public class GenerateZone : MonoBehaviour
 {
-    public UnityEvent SpawnNewZone;
-    public GameObject zone, camp;
+    UnityEvent spawnNewZone = new UnityEvent();
+    public GameObject camp;
+    public GameObject[] zones;
     GameObject pivot;
     public Vector3 offset;
     Respawn playerRespawn;
+    ScoreManager scoreManager;
+    BulletInventory bulletInventory;
+    Timer timer;
     bool portalTriggered = false;
 
     private void Start()
     {
         playerRespawn = FindObjectOfType<Respawn>();
+        scoreManager = FindObjectOfType<ScoreManager>();
+        timer = FindObjectOfType<Timer>();
+        bulletInventory = FindObjectOfType<BulletInventory>();
         pivot = GameObject.Find("Pivot");
+
+        spawnNewZone.AddListener(scoreManager.UpdateScore);
+        spawnNewZone.AddListener(timer.GetClearZoneTime);
+        spawnNewZone.AddListener(bulletInventory.NewRound);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,15 +35,14 @@ public class GenerateZone : MonoBehaviour
         {
             portalTriggered = true;
             SpawnZone();
-            SpawnNewZone.Invoke();
+            spawnNewZone.Invoke();
         }
     }
 
     public void SpawnZone()
     {
         LevelStats.ZonesCompleted++;
-        //GameObject instance = LevelStats.ZonesCompleted % 9 == 0 ? camp : zone;
-        GameObject instance = zone;
+        GameObject instance = LevelStats.ZonesCompleted % 9 == 0 ? camp : zones[Random.Range(0, zones.Length)];
             
         Vector3 location = LevelStats.ZonesCompleted * offset;
         GameObject newGameObject = Instantiate(instance, location, Quaternion.Euler(Vector3.up * -180f));

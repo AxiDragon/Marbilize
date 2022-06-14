@@ -397,10 +397,9 @@ GameObject:
   - component: {fileID: 1862302076424276160}
   - component: {fileID: 4366101392656904050}
   - component: {fileID: 7453127486889845904}
-  - component: {fileID: 4920005384225438595}
   - component: {fileID: 7337982218706661972}
+  - component: {fileID: 4920005384225438595}
   - component: {fileID: 991142316}
-  - component: {fileID: 991142317}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -459,28 +458,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &4920005384225438595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247977676107792687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7225e15f457c046b79bc329693b8cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 2056
-  speed: 25
-  jumpForce: 6
-  groundDistance: 0.1
-  dashCooldown: 1
-  dashForce: 1
-  dashDuration: 1
-  recoilDuration: 0.3
 --- !u!114 &7337982218706661972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,11 +579,49 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1f05cb64-7d56-415f-a289-8ddd8222da7a
     m_ActionName: Player/CameraMove
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: PauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 969aff60-2ac3-481b-9f68-f2145bd3bd78
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 6143117316605565106}
+--- !u!114 &4920005384225438595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247977676107792687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7225e15f457c046b79bc329693b8cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 2056
+  speed: 25
+  jumpForce: 10
+  groundDistance: 0.1
+  dashCooldown: 0.1
+  dashForce: 1
+  dashDuration: 0.5
+  recoilDuration: 0.3
 --- !u!114 &991142316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,19 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711064c2d20240b1415c72c9bf1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &991142317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247977676107792687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa08b716bdd55c4aa938de1ad95a7ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punishment: 3
+  water: {fileID: 0}
 --- !u!1 &1092801803789564540
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +763,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664f006486babdc4fa15c6b740b11042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletInventory: []
+  usedBulletInventory: []
+  roundBullets: []
   bulletArray: {fileID: 5580485225524167102}
+  bulletInventoryUI: {fileID: 0}
 --- !u!1 &1932698781315307813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,18 +2555,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1129991646c8dba43bdb9aa4e474f58d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &753731597883319920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5008988272688947980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1b5055ecb6a4524684d9b0799b34ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5580485225524167102 stripped

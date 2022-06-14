@@ -5,20 +5,22 @@ using UnityEngine;
 public class AboveVoidCheck : MonoBehaviour
 {
     Health health;
-    LayerMask layerMask;
-    public float punishment;
+    public static bool isInside = true;
 
     private void Start()
     {
         health = FindObjectOfType<Health>();
-        layerMask = GetComponent<PlayerMovement>().groundMask;
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
+        if (other.CompareTag("Player"))
+            isInside = true;
+    }
 
-        if (!Physics.Raycast(ray, 1000f, layerMask) && health.health > 0f)
-            health.DepleteHealth(punishment);
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            isInside = false;
     }
 }

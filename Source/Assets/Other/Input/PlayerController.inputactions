@@ -58,13 +58,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "969aff60-2ac3-481b-9f68-f2145bd3bd78",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "484a0ed5-3a8a-40f4-9e8f-3917f385dfda",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player",
@@ -75,7 +84,7 @@
                 {
                     "name": "",
                     "id": "ac10317c-26a5-4a5f-9a13-b34fb0683b3c",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player",
@@ -185,7 +194,7 @@
                 {
                     "name": "negative",
                     "id": "d027719e-d2d9-48a4-80f7-374a3352d6b5",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player",
@@ -196,7 +205,7 @@
                 {
                     "name": "positive",
                     "id": "43d792fe-53cf-485a-afc7-5a71230b54a1",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player",
@@ -212,6 +221,17 @@
                     "processors": "",
                     "groups": "Player",
                     "action": "SwapBullets",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc7a734d-4506-45bc-8743-d83911eeeb3e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

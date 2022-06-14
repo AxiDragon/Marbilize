@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ObstacleBase
-  m_Shader: {fileID: -6465566751694194690, guid: 4443bd441cabed14cadf0cf381863896, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 76d6a59bfc4a1864daf2e5f673a5c85c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseTexture:
-        m_Texture: {fileID: 2800000, guid: f520e324aef8c3b42b90d7787abe6f2e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 504f505b7af5f7c43acd71d367e101b9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -95,7 +95,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 6
+    - _Intensity: 200
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -105,7 +105,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Spread: 4
+    - _Spread: 25
     - _SrcBlend: 1
     - _Surface: 0
     - _UseTexture: 1
@@ -113,11 +113,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0.7209877, g: 0.73, b: 0.71197534, a: 1}
-    - _Color: {r: 0.3137255, g: 0.31764707, b: 0.30980393, a: 1}
+    - _BottomColor: {r: 0.7529412, g: 0.75385624, b: 0.78039217, a: 1}
+    - _Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TopColor: {r: 0.9876543, g: 1, b: 0.97530866, a: 1}
+    - _TopColor: {r: 0.45999998, g: 0.48999998, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1756936591052990457
 MonoBehaviour:

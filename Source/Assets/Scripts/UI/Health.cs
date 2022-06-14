@@ -41,6 +41,11 @@ public class Health : MonoBehaviour
             DepleteHealth(1f);
         }
 
+        if (!AboveVoidCheck.isInside)
+        {
+            DepleteHealth(3f);
+        }
+
         if (health <= 0f && !healthUp)
         {
             healthUp = true;

@@ -31,6 +31,7 @@ public class LevelStats : MonoBehaviour
     }
 
     public static int Difficulty = 25;
+    public static float TimeSpeed = 1.2f;
     public static GameObject CurrentZone;
 
     private void Start()
@@ -38,6 +39,7 @@ public class LevelStats : MonoBehaviour
         Difficulty = 25;
         ZonesCompleted = 0;
         AreasCompleted = 0;
+        Time.timeScale = TimeSpeed;
     }
 
     public static void CalculateDifficulty()

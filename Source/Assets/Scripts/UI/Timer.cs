@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
         get { return timeLeft; }
         set 
         { 
-            timeLeft = value;
+            timeLeft = Mathf.Clamp(value, 0f, 30f);
 
             if (!countingDown)
                 StartCoroutine(SetTimer(timeLeft));
@@ -40,7 +40,7 @@ public class Timer : MonoBehaviour
 
     public void GetClearZoneTime()
     {
-        TimeLeft += (25 - Mathf.Sqrt(LevelStats.Difficulty));
+        TimeLeft += 10f - Mathf.Pow(LevelStats.Difficulty, 1f / 2.5f);
     }
 
     public IEnumerator SetTimer(float targetTime)

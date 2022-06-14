@@ -6,7 +6,7 @@ public class ObstacleInstance : MonoBehaviour
 {
     Obstacle obs;
     Rigidbody rb;
-    public GameObject token,explosion;
+    public GameObject token, explosion;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class ObstacleInstance : MonoBehaviour
     {
         if (obs.tokenBox)
             Instantiate(token, transform.position, Quaternion.identity);
-        
+
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(transform.root.gameObject);
     }
@@ -33,5 +33,11 @@ public class ObstacleInstance : MonoBehaviour
         obs = stats;
         if (obs.tokenBox)
             name = "TokenBox";
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && rb.gameObject.layer == 11)
+            rb.gameObject.layer = 3;
     }
 }

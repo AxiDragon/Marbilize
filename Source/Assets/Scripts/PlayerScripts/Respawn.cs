@@ -5,6 +5,7 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     float threshold = -4f;
+    public GameObject water;
     Timer timer;
     Transform respawnPoint;
 
@@ -17,11 +18,7 @@ public class Respawn : MonoBehaviour
     void Update()
     {
         if (transform.localPosition.y < threshold)
-        {
             RespawnPlayer();
-            if (timer)
-                timer.timeLeft -= 5f;
-        }
     }
 
     public void RespawnPlayer()
@@ -33,6 +30,7 @@ public class Respawn : MonoBehaviour
     public void UpdateIncrement(float increment)
     {
         threshold += increment;
+        water.transform.position += Vector3.up * increment;
     }
 
     public void UpdateRespawnPoint(Transform point)

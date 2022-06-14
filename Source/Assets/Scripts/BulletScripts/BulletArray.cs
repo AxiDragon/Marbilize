@@ -15,7 +15,6 @@ public class BulletArray : MonoBehaviour
         bullet.Add(Tier2Bullets);
         bullet.Add(Tier3Bullets);
         InitializeInventory(3, 3, 3);
-        inventory.TestRound();
     }
 
     void InitializeInventory(int tier1Bullets, int tier2Bullets, int tier3Bullets)

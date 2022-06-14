@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public GameObject explosion;
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag != "Player")
+        if (!collision.collider.CompareTag("Player"))
         {
             Explode();
         }
@@ -24,14 +24,14 @@ public class Bullet : MonoBehaviour
             if (rb == null)
                 continue;
 
-            if (!bulletStats.affectsPlayer && rb.tag == "Player")
+            if (!bulletStats.affectsPlayer && rb.CompareTag("Player"))
                 continue;
 
             if (rb.gameObject.layer == 11)
                 rb.gameObject.layer = 3;
 
-            if (rb.name.Contains("Token") && rb.GetComponent<ObstacleInstance>())
-                rb.GetComponent<ObstacleInstance>().Explode();
+            if (rb.name.Contains("Token") && rb.TryGetComponent(out ObstacleInstance obstacle))
+               obstacle.Explode();
 
             rb.AddExplosionForce(bulletStats.explosionForce, transform.position, bulletStats.explosionWidth);
         }

@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * moveVector * speed / 2f;
+        Vector3 movement = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * moveVector * speed * ItemStats.speedMod / 2f;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z) + dashMove + recoilMove;
         rb.angularVelocity = Vector3.zero;
     }
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(sphereCheckPos.position, groundDistance, groundMask);
 
         if (isGrounded && callback.action.WasPerformedThisFrame())
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+            rb.AddForce(Vector3.up * jumpForce * ItemStats.jumpMod, ForceMode.VelocityChange);
     }
 
     public void Move(InputAction.CallbackContext callback)

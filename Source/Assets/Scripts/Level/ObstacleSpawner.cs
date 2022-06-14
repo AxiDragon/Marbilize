@@ -9,8 +9,8 @@ public class ObstacleSpawner : MonoBehaviour
     public Obstacle[] obstacleArray;
     public Obstacle tokenBox;
     public float startingWidth = 10f;
-    float tokenBoxChance = 0.01f;
     int obstaclePoints;
+    public int amount;
     Vector3 dev;
     BoxCollider coll;
     LayerMask ignoreLayer;
@@ -18,7 +18,7 @@ public class ObstacleSpawner : MonoBehaviour
     void Start()
     {
         LevelStats.CurrentZone = transform.root.gameObject;
-        obstaclePoints = LevelStats.Difficulty;
+        obstaclePoints = LevelStats.Difficulty / amount;
         coll = GetComponent<BoxCollider>();
         coll.size = new Vector3(coll.size.x, coll.size.y, startingWidth + Mathf.Sqrt(obstaclePoints));
         dev = coll.bounds.extents;
@@ -41,9 +41,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             if (obstacles.Count > 0)
             {
-                float random = Random.Range(0f, 1f);
-
-                if (random < tokenBoxChance && tokensSpawned < 1)
+                if (Random.value < ItemStats.tokenBoxChance && tokensSpawned < ItemStats.tokenBoxLimit)
                 {
                     tokensSpawned++;
                     SpawnObstacle(tokenBox);
@@ -75,10 +73,13 @@ public class ObstacleSpawner : MonoBehaviour
 
             GameObject obstacleInstance = Instantiate(obstacle, finalPosition, Quaternion.identity);
 
+            float intensityValue = 600f / Mathf.Sqrt(obs.mass);
+
             obstacleInstance.transform.localScale = obs.size;
             obstacleInstance.GetComponent<ObstacleInstance>().AssignObstacleStats(obs);
             obstacleInstance.GetComponent<Rigidbody>().mass = obs.mass;
             obstacleInstance.GetComponent<MeshRenderer>().material.SetTexture("_BaseTexture", obs.texture);
+            obstacleInstance.GetComponent<MeshRenderer>().material.SetFloat("_Intensity", intensityValue);
             obstacle.name = obs.name;
         }
     }

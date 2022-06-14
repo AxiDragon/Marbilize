@@ -22,12 +22,12 @@ public class BulletInventory : MonoBehaviour
     void Start()
     {
         bulletInventory.Add(null);
-        bulletInventory.Clear();
+        bulletInventory.RemoveAt(bulletInventory.Count - 1);
         usedBulletInventory.Add(null);
-        usedBulletInventory.Clear();
+        usedBulletInventory.RemoveAt(usedBulletInventory.Count - 1);
         fireBullet = FindObjectOfType<FireBullet>();
         bulletText = FindObjectOfType<BulletText>();
-        //bulletInventoryUI = FindObjectOfType<BulletInventoryUI>();
+        NewRound();
     }
 
     public void UpdateCurrentBullet(InputAction.CallbackContext callback)
@@ -111,5 +111,13 @@ public class BulletInventory : MonoBehaviour
     {
         for (int i = 0; i < bulletInventory.Count; i++)
             roundBullets.Add(bulletInventory[i]);
+    }
+
+    public void NewRound()
+    {
+        roundBullets.Clear();
+        print(bulletInventory.Count);
+        roundBullets.Add(bulletInventory[Random.Range(0, bulletInventory.Count)]);
+        bulletText.UpdateBulletText(roundBullets[0].name, roundBullets[0].tier);
     }
 }
