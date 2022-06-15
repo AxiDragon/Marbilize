@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944971623460835477}
   m_LocalRotation: {x: 0.0000005026646, y: 1, z: -0.00000035762784, w: 0.00000017776809}
-  m_LocalPosition: {x: 0.10256, y: -1.1418, z: 0.70591}
-  m_LocalScale: {x: 1.3801, y: 1.3801, z: 1.3801}
+  m_LocalPosition: {x: -0.05413, y: -1.3521, z: 0.10234}
+  m_LocalScale: {x: 0.96535236, y: 0.96535236, z: 0.96535236}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1417479267795609559}
@@ -109,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3815280677902144337}
   - component: {fileID: 7114954908569776200}
+  - component: {fileID: 741425286727686157}
   m_Layer: 5
   m_Name: BulletDisplay
   m_TagString: Untagged
@@ -147,6 +148,19 @@ MonoBehaviour:
   flip: 1
   full: 1
   adjustment: {x: 0, y: 0, z: 0}
+--- !u!114 &741425286727686157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3731615688545001127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebb47a9de4fbe946be8125fb9bf9af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseCamp: {fileID: 0}
 --- !u!1 &6164814872846229482
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,8 +187,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6164814872846229482}
   m_LocalRotation: {x: -2.8421703e-14, y: 0.7071067, z: -0.70710677, w: 1.1368681e-13}
-  m_LocalPosition: {x: 0, y: 0, z: 7.4585743}
-  m_LocalScale: {x: 0.5757402, y: 0.5757401, z: 0.5757401}
+  m_LocalPosition: {x: 0, y: 0, z: 7.2203}
+  m_LocalScale: {x: 0.36200818, y: 0.3620081, z: 0.3620081}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7464141370467909548}
@@ -182,7 +196,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.0143403}
+  m_AnchoredPosition: {x: 0.14025, y: -1.0143}
   m_SizeDelta: {x: 35, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5992091046687594577

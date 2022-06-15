@@ -615,7 +615,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 2056
-  speed: 25
+  speed: 35
   jumpForce: 10
   groundDistance: 0.1
   dashCooldown: 0.1

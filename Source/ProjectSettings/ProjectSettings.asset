@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: AxiDragon
   productName: 'Trinity Takes Three: Koifih'
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 6d67a30903122c548bd9b36d109c3064, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 1, g: 0.73333335, b: 0.9490197, a: 1}
   m_ShowUnitySplashScreen: 1

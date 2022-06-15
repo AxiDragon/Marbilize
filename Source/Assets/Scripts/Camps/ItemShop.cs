@@ -20,7 +20,6 @@ public class ItemShop : MonoBehaviour
 
     void Start()
     {
-        //baseCamp = GetBaseCamp();
         tokenManager = FindObjectOfType<TokenManager>();
         
         items.Add(explosiveItem);
@@ -42,7 +41,7 @@ public class ItemShop : MonoBehaviour
         if (bought)
             return;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && baseCamp.lit)
         {
             int cost = free ? 0 : 3;
             if (tokenManager.Tokens >= cost && baseCamp.lit)

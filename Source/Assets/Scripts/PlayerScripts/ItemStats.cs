@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ItemStats : MonoBehaviour
 {
-    public static int tokenBoxLimit = 1;
-    public static int bullets = 1;
-    public static float tokenBoxChance = 0.01f;
+    public static int tokenBoxLimit = 2;
+    public static int bullets = 3;
+    public static float tokenBoxChance = 0.03f;
     public static float jumpMod = 1f;
     public static float speedMod = 1f;
     public static float explosionWidthMod = 1f;
@@ -15,7 +15,21 @@ public class ItemStats : MonoBehaviour
     public static bool fallOff = false;
     static Rigidbody rb;
 
-    private void Start() => rb = GameObject.Find("Player").GetComponent<Rigidbody>();
+    private void Start()
+    {
+        tokenBoxLimit = 2;
+        bullets = 3;
+        tokenBoxChance = 0.03f;
+        jumpMod = 1f;
+        speedMod = 1f;
+        explosionWidthMod = 1f;
+        explosionPowerMod = 1f;
+        recoilMod = 1f;
+        mass = .5f;
+        shieldGainModifier = 1f;
+        fallOff = false;
+        rb = GameObject.Find("Player").GetComponent<Rigidbody>();
+    }
 
     public static void UpdateItemStats(string itemName)
     {
@@ -37,7 +51,7 @@ public class ItemStats : MonoBehaviour
                 tokenBoxLimit++;
                 break;
             case "LUCKY COIN":
-                tokenBoxChance += 0.01f;
+                tokenBoxChance += 0.04f;
                 break;
             case "HEAVY":
                 mass *= 1.3f;

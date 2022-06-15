@@ -103,11 +103,44 @@ PrefabInstance:
       objectReference: {fileID: 4915267408365399885, guid: 38df63f7dd538f540a82ffcdaa4650f6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf17e09817ea5004d917b9924f056966, type: 3}
+--- !u!114 &1219602394123974876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2151953376854783000, guid: bf17e09817ea5004d917b9924f056966, type: 3}
+  m_PrefabInstance: {fileID: 950721160370719940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a20e0b470354346979b157595235db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3211913646453908906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2423677301503125870, guid: bf17e09817ea5004d917b9924f056966, type: 3}
   m_PrefabInstance: {fileID: 950721160370719940}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6154124031797204119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6365403666449406035, guid: bf17e09817ea5004d917b9924f056966, type: 3}
+  m_PrefabInstance: {fileID: 950721160370719940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a20e0b470354346979b157595235db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8033903331387497972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7084033949075624240, guid: bf17e09817ea5004d917b9924f056966, type: 3}
+  m_PrefabInstance: {fileID: 950721160370719940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a20e0b470354346979b157595235db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1918741623453595832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,6 +148,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4170303839480853457}
     m_Modifications:
+    - target: {fileID: 741425286727686157, guid: 0c50c5b51ad9f0046bc6a501070b9d54, type: 3}
+      propertyPath: baseCamp
+      value: 
+      objectReference: {fileID: 8033903331387497972}
     - target: {fileID: 3731615688545001127, guid: 0c50c5b51ad9f0046bc6a501070b9d54, type: 3}
       propertyPath: m_Name
       value: BulletRightDisplay
@@ -189,6 +226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4170303839480853457}
     m_Modifications:
+    - target: {fileID: 741425286727686157, guid: 0c50c5b51ad9f0046bc6a501070b9d54, type: 3}
+      propertyPath: baseCamp
+      value: 
+      objectReference: {fileID: 6154124031797204119}
     - target: {fileID: 3731615688545001127, guid: 0c50c5b51ad9f0046bc6a501070b9d54, type: 3}
       propertyPath: m_Name
       value: BulletMiddleDisplay
@@ -263,6 +304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4170303839480853457}
     m_Modifications:
+    - target: {fileID: 741425286727686157, guid: 0c50c5b51ad9f0046bc6a501070b9d54, type: 3}
+      propertyPath: baseCamp
+      value: 
+      objectReference: {fileID: 1219602394123974876}
     - target: {fileID: 3731615688545001127, guid: 0c50c5b51ad9f0046bc6a501070b9d54, type: 3}
       propertyPath: m_Name
       value: BulletLeftDisplay

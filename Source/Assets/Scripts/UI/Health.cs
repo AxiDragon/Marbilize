@@ -86,6 +86,8 @@ public class Health : MonoBehaviour
 
         foreach (TextMeshProUGUI text in texts)
             text.text = health.ToString("F1");
+
+        StartCoroutine(FindObjectOfType<GameOver>().GameOvered());
     }
 
     IEnumerator Cooldown()

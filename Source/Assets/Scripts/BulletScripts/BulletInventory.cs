@@ -97,6 +97,13 @@ public class BulletInventory : MonoBehaviour
         else
             print("Bullet inventory is null");
     }
+
+    public void SwapInventory(ScriptableBullet selection, int index)
+    {
+        bulletInventory[index] = selection;
+        bulletInventoryUI.UpdateUI(bulletInventory);
+    }
+
     public void RemoveFromInventory(int selection)
     {
         bulletInventoryUI.UpdateUI(bulletInventory);
@@ -123,9 +130,21 @@ public class BulletInventory : MonoBehaviour
     public void NewRound()
     {
         roundBullets.Clear();
+        int bulletAmount = Mathf.Clamp(ItemStats.bullets, 0, 9);
+        List<int> bullets = new List<int>();
 
-        for (int i = 0; i < ItemStats.bullets; i++)
-            roundBullets.Add(bulletInventory[Random.Range(0, bulletInventory.Count)]);
+        for (int i = 0; i < 9; i++)
+        {
+            bullets.Add(i);
+        }
+
+
+        for (int i = 0; i < bulletAmount; i++)
+        {
+            int random = Random.Range(0, bullets.Count);
+            roundBullets.Add(bulletInventory[random]);
+            bullets.RemoveAt(random);
+        }
 
         bulletText.UpdateBulletText(roundBullets[0].bulletName, roundBullets[0].tier);
     }

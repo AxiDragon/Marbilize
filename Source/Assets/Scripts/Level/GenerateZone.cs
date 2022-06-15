@@ -8,6 +8,9 @@ public class GenerateZone : MonoBehaviour
     UnityEvent spawnNewZone = new UnityEvent();
     public GameObject[] camps;
     public GameObject[] zones;
+
+    int previousCamp = -1;
+
     GameObject pivot;
     public Vector3 offset;
     Respawn playerRespawn;
@@ -43,15 +46,26 @@ public class GenerateZone : MonoBehaviour
     {
         LevelStats.ZonesCompleted++;
 
-        GameObject instance = LevelStats.ZonesCompleted % LevelStats.nextZone == 0 ? 
-            camps[Random.Range(0, camps.Length)] : zones[Random.Range(0, zones.Length)];
-
-        LevelStats.nextZone += 3 + LevelStats.AreasCompleted;
+        GameObject instance = LevelStats.ZonesCompleted % LevelStats.zonesPerArea == 0 ? 
+            camps[GetRandomCamp()] : zones[Random.Range(0, zones.Length)];
 
         Vector3 location = LevelStats.ZonesCompleted * offset;
         GameObject newGameObject = Instantiate(instance, location, Quaternion.Euler(Vector3.up * -180f));
         playerRespawn.UpdateIncrement(offset.y);
         playerRespawn.UpdateRespawnPoint(newGameObject.transform.Find("StartPosition").transform);
         playerRespawn.RespawnPlayer();
+    }
+
+    int GetRandomCamp()
+    {
+        int randomCamp = previousCamp; 
+        while (randomCamp == previousCamp)
+        {
+            randomCamp = Random.Range(0, camps.Length);
+        }
+
+        previousCamp = randomCamp;
+
+        return randomCamp;
     }
 }

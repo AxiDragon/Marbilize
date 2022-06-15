@@ -11,16 +11,21 @@ public class CameraLook : MonoBehaviour
     Transform playerBody;
     public GameObject head;
     Vector3 startRot;
+    BulletInventoryUI ui;
 
     void Start()
     {
         startRot = head.transform.localEulerAngles;
         playerBody = transform.parent;
+        ui = FindObjectOfType<BulletInventoryUI>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void MoveCamera(InputAction.CallbackContext callback)
     {
+        if (ui.paused)
+            return;
+
         Vector2 rotation = callback.ReadValue<Vector2>() * sensitivity;
 
         xRotation -= rotation.y;
