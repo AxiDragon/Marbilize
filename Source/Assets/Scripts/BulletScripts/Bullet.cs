@@ -36,7 +36,9 @@ public class Bullet : MonoBehaviour
             rb.AddExplosionForce(bulletStats.explosionForce * ItemStats.explosionPowerMod, transform.position, bulletStats.explosionWidth);
         }
         
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        if(bulletStats.explode)
+            Instantiate(explosion, transform.position, Quaternion.identity);
+
         Destroy(transform.root.gameObject);
     }
 

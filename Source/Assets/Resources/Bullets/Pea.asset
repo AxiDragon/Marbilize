@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea0e774abc319d4da60adf937377080, type: 3}
   m_Name: Pea
   m_EditorClassIdentifier: 
-  bulletName: 
+  bulletName: Pea
   tier: 0
-  explosionForce: 0
-  spread: 0
-  speed: 0
-  explosionWidth: 0
-  recoil: 0
-  collisionRadius: 0
+  explosionForce: 2000
+  spread: 25
+  speed: 2
+  explosionWidth: 0.5
+  recoil: 0.25
+  collisionRadius: 0.25
   isMelee: 0
   affectsPlayer: 0
-  bulletSprite: {fileID: 0}
+  bulletSprite: {fileID: 21300000, guid: 30ee41b0b81ad3749a720e8203522fb5, type: 3}
+  explode: 0

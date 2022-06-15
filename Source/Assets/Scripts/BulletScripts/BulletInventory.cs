@@ -8,6 +8,7 @@ public class BulletInventory : MonoBehaviour
     public List<ScriptableBullet> bulletInventory = new List<ScriptableBullet>();
     public List<ScriptableBullet> usedBulletInventory = new List<ScriptableBullet>();
     public List<ScriptableBullet> roundBullets = new List<ScriptableBullet>();
+    public ScriptableBullet pea;
 
     public static int MaxRound = 3;
     public static int MaxBulletsInventory = 9;
@@ -68,18 +69,24 @@ public class BulletInventory : MonoBehaviour
 
     public void FireBullet(InputAction.CallbackContext callback)
     {
-        if (!callback.action.WasPressedThisFrame() || fireBullet.fired || roundBullets.Count == 0)
+        if (!callback.action.WasPressedThisFrame() || fireBullet.fired)
             return;
 
-        fireBullet.ShootBullet(roundBullets[current]);
-        DiscardFromRound(current);
-        current = LoopCurrentBullet();
-
-
         if (roundBullets.Count == 0)
-            bulletText.UpdateBulletText("None", 0);
+        {
+            fireBullet.ShootBullet(pea);
+        }
         else
-            bulletText.UpdateBulletText(roundBullets[current].bulletName, roundBullets[current].tier);
+        {
+            fireBullet.ShootBullet(roundBullets[current]);
+            DiscardFromRound(current);
+            current = LoopCurrentBullet();
+
+            if (roundBullets.Count == 0)
+                bulletText.UpdateBulletText("Pea", 0);
+            else
+                bulletText.UpdateBulletText(roundBullets[current].bulletName, roundBullets[current].tier);
+        }
     }
 
     public void AddToInventory(ScriptableBullet selection)
@@ -116,7 +123,10 @@ public class BulletInventory : MonoBehaviour
     public void NewRound()
     {
         roundBullets.Clear();
-        roundBullets.Add(bulletInventory[Random.Range(0, bulletInventory.Count)]);
+
+        for (int i = 0; i < ItemStats.bullets; i++)
+            roundBullets.Add(bulletInventory[Random.Range(0, bulletInventory.Count)]);
+
         bulletText.UpdateBulletText(roundBullets[0].bulletName, roundBullets[0].tier);
     }
 }

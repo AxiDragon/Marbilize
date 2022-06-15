@@ -12,14 +12,14 @@ public class LevelStats : MonoBehaviour
         {
             zonesCompleted = value;
 
-            if (zonesCompleted % zonesPerArea == 0)
+            if (zonesCompleted % nextZone == 0)
                 areasCompleted++;
 
             CalculateDifficulty();
         }
     }
 
-    public static int zonesPerArea = 6;
+    public static int nextZone = 3;
 
     private static int areasCompleted = 0;
     public static int AreasCompleted

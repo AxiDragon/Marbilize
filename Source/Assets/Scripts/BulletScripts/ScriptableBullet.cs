@@ -11,4 +11,5 @@ public class ScriptableBullet : ScriptableObject
     public bool isMelee;
     public bool affectsPlayer;
     public Sprite bulletSprite;
+    public bool explode = true;
 }

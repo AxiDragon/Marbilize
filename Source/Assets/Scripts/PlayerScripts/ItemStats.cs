@@ -3,26 +3,25 @@ using UnityEngine;
 public class ItemStats : MonoBehaviour
 {
     public static int tokenBoxLimit = 1;
+    public static int bullets = 1;
     public static float tokenBoxChance = 0.01f;
     public static float jumpMod = 1f;
     public static float speedMod = 1f;
     public static float explosionWidthMod = 1f;
     public static float explosionPowerMod = 1f;
     public static float recoilMod = 1f;
-    public static float mass = 1f;
+    public static float mass = .5f;
+    public static float shieldGainModifier = 1f;
     public static bool fallOff = false;
     static Rigidbody rb;
 
-    private void Start()
-    {
-        rb = GameObject.Find("Player").GetComponent<Rigidbody>();
-    }
+    private void Start() => rb = GameObject.Find("Player").GetComponent<Rigidbody>();
 
     public static void UpdateItemStats(string itemName)
     {
         switch (itemName)
         {
-            case "BOOTS":
+            case "BOOT":
                 speedMod *= 1.3f;
                 break;
             case "AERO":
@@ -53,6 +52,12 @@ public class ItemStats : MonoBehaviour
                 break;
             case "SHAKEN":
                 recoilMod *= 1.3f;
+                break;
+            case "STRONG SHIELD":
+                shieldGainModifier *= 1.3f;
+                break;
+            case "EXTRA BULLET":
+                bullets++;
                 break;
         }
     }

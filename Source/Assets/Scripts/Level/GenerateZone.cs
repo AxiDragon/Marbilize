@@ -42,9 +42,12 @@ public class GenerateZone : MonoBehaviour
     public void SpawnZone()
     {
         LevelStats.ZonesCompleted++;
-        GameObject instance = LevelStats.ZonesCompleted % LevelStats.zonesPerArea == 0 ? 
+
+        GameObject instance = LevelStats.ZonesCompleted % LevelStats.nextZone == 0 ? 
             camps[Random.Range(0, camps.Length)] : zones[Random.Range(0, zones.Length)];
-            
+
+        LevelStats.nextZone += 3 + LevelStats.AreasCompleted;
+
         Vector3 location = LevelStats.ZonesCompleted * offset;
         GameObject newGameObject = Instantiate(instance, location, Quaternion.Euler(Vector3.up * -180f));
         playerRespawn.UpdateIncrement(offset.y);

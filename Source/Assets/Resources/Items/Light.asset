@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: 040f4f90fb82c8c42b207926107809bb, type: 3}
   itemName: LIGHT
-  itemDescription: RECOIL+
+  itemDescription: MASS-
   itemColor: {r: 0.40784317, g: 0.6627451, b: 0.43921572, a: 1}

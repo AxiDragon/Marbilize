@@ -503,9 +503,10 @@ MonoBehaviour:
   camps:
   - {fileID: 5730401206562999277, guid: 94d17bc4dfda8264a93bc837ec7e3a82, type: 3}
   - {fileID: 2871276609894956816, guid: f78704296727d994fb383ce0877f79fb, type: 3}
+  - {fileID: 2871276609894956816, guid: b43c5f2cdff393b40bf1f841bfb4d712, type: 3}
   zones:
   - {fileID: 4915267408365399885}
-  - {fileID: 996877939573941818, guid: d8a93f9946b1f8a47ba8d76fb7d911ce, type: 3}
+  - {fileID: 996877939573941818, guid: 474e12aaaba6236479fb321cf79ad577, type: 3}
   offset: {x: 25, y: 3, z: 0}
 --- !u!1 &791468038614768486
 GameObject:

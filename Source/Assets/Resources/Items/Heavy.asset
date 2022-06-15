@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: f413d32fdbd35d647b0b83818a855b80, type: 3}
   itemName: HEAVY
-  itemDescription: RECOIL-
+  itemDescription: MASS+
   itemColor: {r: 0.40784317, g: 0.6627451, b: 0.43921572, a: 1}

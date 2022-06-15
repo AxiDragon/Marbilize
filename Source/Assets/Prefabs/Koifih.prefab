@@ -450,7 +450,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247977676107792687}
   serializedVersion: 2
-  m_Mass: 0.15
+  m_Mass: 1
   m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -766,6 +766,7 @@ MonoBehaviour:
   bulletInventory: []
   usedBulletInventory: []
   roundBullets: []
+  pea: {fileID: 11400000, guid: e9bb8e0605d6596489c88d6263139d7c, type: 2}
   bulletArray: {fileID: 5580485225524167102}
   bulletInventoryUI: {fileID: 0}
 --- !u!1 &1932698781315307813
@@ -2545,18 +2546,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1348597436178640074, guid: 624811deba5f1de41acc57516a984f93, type: 3}
   m_PrefabInstance: {fileID: 6283839187117854662}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1855986649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5008988272688947980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1129991646c8dba43bdb9aa4e474f58d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &828988136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,6 +2556,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae8808a3674b1664b8174febafb7ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1855986649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008988272688947980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1129991646c8dba43bdb9aa4e474f58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5580485225524167102 stripped

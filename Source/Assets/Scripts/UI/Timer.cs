@@ -35,12 +35,12 @@ public class Timer : MonoBehaviour
 
     public void GetTime(float increment)
     {
-        TimeLeft += increment;
+        TimeLeft += increment * ItemStats.shieldGainModifier;
     }
 
     public void GetClearZoneTime()
     {
-        TimeLeft += 10f - Mathf.Pow(LevelStats.Difficulty, 1f / 2.5f);
+        TimeLeft += (10f - Mathf.Pow(LevelStats.Difficulty, 1f / 2.5f)) * ItemStats.shieldGainModifier;
     }
 
     public IEnumerator SetTimer(float targetTime)
