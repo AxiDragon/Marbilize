@@ -148,7 +148,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 96
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2555,6 +2555,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1129991646c8dba43bdb9aa4e474f58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &828988136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008988272688947980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8808a3674b1664b8174febafb7ad95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5580485225524167102 stripped

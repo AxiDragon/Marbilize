@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff2c4b6cd8092e84aa5e603caef99dc8, type: 3}
-  m_Name: ExplosionPower
+  m_Name: Improved Shield
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: d8583e197373a86408a498c8cab39a6a, type: 3}
-  itemName: VOLATILE
-  itemDescription: POWER+
-  itemColor: {r: 0.83921576, g: 0.27058825, b: 0.3137255, a: 1}
+  itemSprite: {fileID: 21300000, guid: c0551b47a1cc17842ae7170a83e7ff61, type: 3}
+  itemName: STRONG SHIELD
+  itemDescription: SHIELD+
+  itemColor: {r: 0.40784317, g: 0.6627451, b: 0.43921572, a: 1}

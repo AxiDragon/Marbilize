@@ -12,12 +12,14 @@ public class LevelStats : MonoBehaviour
         {
             zonesCompleted = value;
 
-            if (zonesCompleted % 9 == 0)
+            if (zonesCompleted % zonesPerArea == 0)
                 areasCompleted++;
 
             CalculateDifficulty();
         }
     }
+
+    public static int zonesPerArea = 6;
 
     private static int areasCompleted = 0;
     public static int AreasCompleted
@@ -44,7 +46,7 @@ public class LevelStats : MonoBehaviour
 
     public static void CalculateDifficulty()
     {
-        Difficulty = 25 + (AreasCompleted * ZonesCompleted);
+        Difficulty = 25 + ((int)Mathf.Sqrt(AreasCompleted) * ZonesCompleted);
     }
 
     public static void CheckList<T>(List<T> list)

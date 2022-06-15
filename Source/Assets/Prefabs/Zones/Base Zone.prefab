@@ -500,7 +500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487ce9d4740b1d842b47baab0bec9690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camp: {fileID: 5730401206562999277, guid: 94d17bc4dfda8264a93bc837ec7e3a82, type: 3}
+  camps:
+  - {fileID: 5730401206562999277, guid: 94d17bc4dfda8264a93bc837ec7e3a82, type: 3}
+  - {fileID: 2871276609894956816, guid: f78704296727d994fb383ce0877f79fb, type: 3}
   zones:
   - {fileID: 4915267408365399885}
   - {fileID: 996877939573941818, guid: d8a93f9946b1f8a47ba8d76fb7d911ce, type: 3}

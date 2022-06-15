@@ -36,4 +36,9 @@ public class BaseCamp : MonoBehaviour
         lit = false;
         spotlight.intensity = exitIntensity;
     }
+
+    private void OnDisable()
+    {
+        spotlight.intensity = exitIntensity;
+    }
 }

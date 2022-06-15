@@ -6,7 +6,8 @@ using TMPro;
 
 public class TokenManager : MonoBehaviour
 {
-    private int tokens = 0;
+    [SerializeField]
+    private int tokens = 12;
     public int Tokens
     {
         get { return tokens; }

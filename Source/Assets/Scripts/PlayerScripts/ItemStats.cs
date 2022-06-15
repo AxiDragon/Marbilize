@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemStats : MonoBehaviour
@@ -9,17 +7,52 @@ public class ItemStats : MonoBehaviour
     public static float jumpMod = 1f;
     public static float speedMod = 1f;
     public static float explosionWidthMod = 1f;
+    public static float explosionPowerMod = 1f;
+    public static float recoilMod = 1f;
+    public static float mass = 1f;
     public static bool fallOff = false;
+    static Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GameObject.Find("Player").GetComponent<Rigidbody>();
+    }
 
     public static void UpdateItemStats(string itemName)
     {
         switch (itemName)
         {
-            case "Boots":
-                speedMod += 0.3f;
+            case "BOOTS":
+                speedMod *= 1.3f;
                 break;
-            case "Aero":
-                jumpMod += 0.3f;
+            case "AERO":
+                jumpMod *= 1.3f;
+                break;
+            case "VOLATILE":
+                explosionWidthMod *= 1.3f;
+                break;
+            case "REACTIVE":
+                explosionPowerMod *= 1.3f;
+                break;
+            case "TOKEN BOX":
+                tokenBoxLimit++;
+                break;
+            case "LUCKY COIN":
+                tokenBoxChance += 0.01f;
+                break;
+            case "HEAVY":
+                mass *= 1.3f;
+                rb.mass = mass;
+                break;
+            case "LIGHT":
+                mass *= 0.7f;
+                rb.mass = mass;
+                break;
+            case "STEADY":
+                recoilMod *= 0.7f;
+                break;
+            case "SHAKEN":
+                recoilMod *= 1.3f;
                 break;
         }
     }

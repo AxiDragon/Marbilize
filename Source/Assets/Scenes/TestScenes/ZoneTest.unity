@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1067053579}
-  m_IndirectSpecularColor: {r: 0.4378867, g: 0.32110035, b: 0.342544, a: 1}
+  m_IndirectSpecularColor: {r: 0.14602779, g: 0.13131052, b: 0.13571674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -386,10 +386,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 465053960, guid: f9bd1fa15e21ead40acd49b09504ab1d, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 96
-      objectReference: {fileID: 0}
     - target: {fileID: 991142316, guid: f9bd1fa15e21ead40acd49b09504ab1d, type: 3}
       propertyPath: water
       value: 
@@ -550,6 +546,10 @@ PrefabInstance:
     - target: {fileID: 2729378599360584239, guid: d73e057f0b43f5942a1b29af0cc3cf88, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729378600664783554, guid: d73e057f0b43f5942a1b29af0cc3cf88, type: 3}
+      propertyPath: tokens
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d73e057f0b43f5942a1b29af0cc3cf88, type: 3}

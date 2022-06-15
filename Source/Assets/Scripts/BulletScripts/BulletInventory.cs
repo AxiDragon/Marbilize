@@ -116,8 +116,7 @@ public class BulletInventory : MonoBehaviour
     public void NewRound()
     {
         roundBullets.Clear();
-        print(bulletInventory.Count);
         roundBullets.Add(bulletInventory[Random.Range(0, bulletInventory.Count)]);
-        bulletText.UpdateBulletText(roundBullets[0].name, roundBullets[0].tier);
+        bulletText.UpdateBulletText(roundBullets[0].bulletName, roundBullets[0].tier);
     }
 }

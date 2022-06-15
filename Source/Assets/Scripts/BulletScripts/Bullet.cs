@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     public void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, bulletStats.explosionWidth);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, bulletStats.explosionWidth * ItemStats.explosionWidthMod);
 
         foreach (Collider collider in colliders)
         {
@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
             if (rb.name.Contains("Token") && rb.TryGetComponent(out ObstacleInstance obstacle))
                obstacle.Explode();
 
-            rb.AddExplosionForce(bulletStats.explosionForce, transform.position, bulletStats.explosionWidth);
+            rb.AddExplosionForce(bulletStats.explosionForce * ItemStats.explosionPowerMod, transform.position, bulletStats.explosionWidth);
         }
         
         Instantiate(explosion, transform.position, Quaternion.identity);

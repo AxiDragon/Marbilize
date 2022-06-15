@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GenerateZone : MonoBehaviour
 {
     UnityEvent spawnNewZone = new UnityEvent();
-    public GameObject camp;
+    public GameObject[] camps;
     public GameObject[] zones;
     GameObject pivot;
     public Vector3 offset;
@@ -42,7 +42,8 @@ public class GenerateZone : MonoBehaviour
     public void SpawnZone()
     {
         LevelStats.ZonesCompleted++;
-        GameObject instance = LevelStats.ZonesCompleted % 9 == 0 ? camp : zones[Random.Range(0, zones.Length)];
+        GameObject instance = LevelStats.ZonesCompleted % LevelStats.zonesPerArea == 0 ? 
+            camps[Random.Range(0, camps.Length)] : zones[Random.Range(0, zones.Length)];
             
         Vector3 location = LevelStats.ZonesCompleted * offset;
         GameObject newGameObject = Instantiate(instance, location, Quaternion.Euler(Vector3.up * -180f));
