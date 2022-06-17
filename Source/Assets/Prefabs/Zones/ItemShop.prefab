@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e08e29594703040bd287eed3ea40a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseCamp: {fileID: 0}
   explosiveItem:
   - {fileID: 11400000, guid: 32efc32641fd2254981fb0944aefc5d3, type: 2}
   - {fileID: 11400000, guid: a12c2c6713f703a48a932cf5b5e76059, type: 2}
@@ -449,9 +450,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89aa36fee8297d646ad383e577a0a756, type: 2}
   otherItem:
   - {fileID: 11400000, guid: cda550335b92e9d4f9c2683d97e519f9, type: 2}
+  - {fileID: 11400000, guid: 1964af50f710c134b841396d4a7fb7df, type: 2}
   itemSprite: {fileID: 8930725844906917317}
   itemName: {fileID: 3952512196595203337}
   itemDescription: {fileID: 2452674921248665769}
+  free: 0
 --- !u!1 &6164814872846229482
 GameObject:
   m_ObjectHideFlags: 0
