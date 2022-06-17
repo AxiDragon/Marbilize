@@ -88,5 +88,4 @@ public class ItemStats : MonoBehaviour
     {
         return source.GetType().GetProperty(property).GetValue(source, null);
     }
-    //
 }
