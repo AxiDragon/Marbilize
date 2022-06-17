@@ -109,6 +109,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 868b4c433499ddf48b646f43ad7b4b24, type: 2}
   - {fileID: 11400000, guid: 0134c4d9477711e4d9f8e556aeeadd6e, type: 2}
   tokenBox: {fileID: 11400000, guid: 6f4276ffbb57eb340b58d3035b59d16e, type: 2}
+  hans: {fileID: 11400000, guid: 5bcc32342e1ac354bbce936cc35760b6, type: 2}
   startingWidth: 10
   amount: 3
 --- !u!1 &7095383764833737625

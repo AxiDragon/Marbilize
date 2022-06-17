@@ -31,6 +31,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         List<Obstacle> obstacles = obstacleArray.ToList();
         int tokensSpawned = 0;
+        int hansSpawned = 0;
 
         while (obstacles.Count > 0 && obstaclePoints != 0)
         {
@@ -47,12 +48,16 @@ public class ObstacleSpawner : MonoBehaviour
                     tokensSpawned++;
                     SpawnObstacle(tokenBox);
                 }
+                else if (Random.value < ItemStats.hansChance && hansSpawned < ItemStats.hansLimit)
+                {
+                    hansSpawned++;
+                    SpawnObstacle(hans);
+                }
                 else
                 {
                     int randomObstacle = Random.Range(0, obstacles.Count);
                     SpawnObstacle(obstacles[randomObstacle]);
                 }
-
             }
         }
     }
@@ -70,7 +75,6 @@ public class ObstacleSpawner : MonoBehaviour
             obstaclePoints -= obs.cost;
 
             finalPosition = hit.point + Vector3.up * obs.size.y;
-            Debug.DrawLine(transform.position, hit.point, Color.red, 15f);
 
             GameObject obstacleInstance = Instantiate(obstacle, finalPosition, Quaternion.identity);
 

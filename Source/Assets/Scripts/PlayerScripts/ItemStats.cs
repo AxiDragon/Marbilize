@@ -22,7 +22,8 @@ public class ItemStats : MonoBehaviour
         hansLimit = 0;
         tokenBoxLimit = 2;
         bullets = 3;
-        tokenBoxChance = 0.03f;
+        hansChance = 0f;
+        tokenBoxChance = 0.03f; 
         jumpMod = 1f;
         speedMod = 1f;
         explosionWidthMod = 1f;
@@ -75,6 +76,10 @@ public class ItemStats : MonoBehaviour
                 break;
             case "EXTRA BULLET":
                 bullets++;
+                break;
+            case "HANS":
+                hansChance += 0.05f;
+                hansLimit += 5;
                 break;
         }
     }
