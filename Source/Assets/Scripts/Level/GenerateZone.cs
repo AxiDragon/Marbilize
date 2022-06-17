@@ -11,7 +11,6 @@ public class GenerateZone : MonoBehaviour
 
     int previousCamp = -1;
 
-    GameObject pivot;
     public Vector3 offset;
     Respawn playerRespawn;
     ScoreManager scoreManager;
@@ -25,7 +24,6 @@ public class GenerateZone : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
         timer = FindObjectOfType<Timer>();
         bulletInventory = FindObjectOfType<BulletInventory>();
-        pivot = GameObject.Find("Pivot");
 
         spawnNewZone.AddListener(scoreManager.UpdateScore);
         spawnNewZone.AddListener(timer.GetClearZoneTime);
@@ -51,7 +49,7 @@ public class GenerateZone : MonoBehaviour
 
         Vector3 location = LevelStats.ZonesCompleted * offset;
         GameObject newGameObject = Instantiate(instance, location, Quaternion.Euler(Vector3.up * -180f));
-        playerRespawn.UpdateIncrement(offset.y);
+        playerRespawn.UpdateIncrement(offset.y / 1.1f);
         playerRespawn.UpdateRespawnPoint(newGameObject.transform.Find("StartPosition").transform);
         playerRespawn.RespawnPlayer();
     }

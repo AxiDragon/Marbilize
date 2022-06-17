@@ -14,7 +14,9 @@ public class BulletArray : MonoBehaviour
         bullet.Add(Tier1Bullets);
         bullet.Add(Tier2Bullets);
         bullet.Add(Tier3Bullets);
-        InitializeInventory(6, 3, 0);
+        InitializeInventory(6, 0, 0);
+        InitializeInventorySpecialTier(3);
+        
     }
 
     void InitializeInventory(int tier1Bullets, int tier2Bullets, int tier3Bullets)
@@ -28,5 +30,10 @@ public class BulletArray : MonoBehaviour
     {
         for (int i = 0; i < amount; i++)
             inventory.AddToInventory(type);
+    }
+    void InitializeInventorySpecialTier(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+            inventory.AddToInventory(bullet[0][Random.Range(1, bullet[0].Length)]);
     }
 }

@@ -8,6 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject obstacle;
     public Obstacle[] obstacleArray;
     public Obstacle tokenBox;
+    public Obstacle hans;
     public float startingWidth = 10f;
     int obstaclePoints;
     public int amount;

@@ -20,6 +20,8 @@ public class BulletInventoryUI : MonoBehaviour
 
     [HideInInspector]
     public bool paused = false;
+    [HideInInspector]
+    public bool choosingBullet = false;
 
     private void Start()
     {
@@ -64,11 +66,13 @@ public class BulletInventoryUI : MonoBehaviour
 
         if (on)
         {
+            choosingBullet = true;
             Cursor.lockState = CursorLockMode.None;
             enabler.Disable();
         }
         else
         {
+            choosingBullet = false;
             Cursor.lockState = CursorLockMode.Locked;
             enabler.Enable();
         }

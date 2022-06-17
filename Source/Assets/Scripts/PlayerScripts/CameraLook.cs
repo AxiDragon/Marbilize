@@ -23,7 +23,7 @@ public class CameraLook : MonoBehaviour
 
     public void MoveCamera(InputAction.CallbackContext callback)
     {
-        if (ui.paused)
+        if (ui.paused || ui.choosingBullet)
             return;
 
         Vector2 rotation = callback.ReadValue<Vector2>() * sensitivity;

@@ -16,5 +16,5 @@ MonoBehaviour:
   mass: 2
   breakThreshold: 35
   tokenBox: 0
-  size: {x: 3.5, y: 2, z: 2}
+  size: {x: 4, y: 2, z: 2}
   texture: {fileID: 2800000, guid: 504f505b7af5f7c43acd71d367e101b9, type: 3}

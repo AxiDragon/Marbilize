@@ -2,26 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
+    ScoreManager scoreManager;
+    List<GameObject> gameObjects = new List<GameObject>();
+
+    private void Start()
+    {
+        scoreManager = FindObjectOfType<ScoreManager>();
+        foreach (Transform child in transform)
+        {
+            gameObjects.Add(child.gameObject);
+            child.gameObject.SetActive(false);
+        }
+    }
+
     public IEnumerator GameOvered()
     {
+        for (int i = 0; i < gameObjects.Count; i++)
+            gameObjects[i].SetActive(true);
+
         float timer = 0f;
         float maxTime = 1f;
-        Image fade = GetComponent<Image>();
+        CanvasGroup group = GetComponent<CanvasGroup>();
+        TextMeshProUGUI textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+        textMeshProUGUI.text = scoreManager.Score.ToString();
 
         while (timer < maxTime)
         {
             timer += Time.deltaTime;
-            fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, timer);
+            group.alpha = timer;
             yield return null;
         }
 
-        yield return new WaitForSeconds(1f);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Cursor.lockState = CursorLockMode.None;
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

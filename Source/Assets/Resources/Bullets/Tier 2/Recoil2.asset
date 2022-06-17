@@ -22,4 +22,5 @@ MonoBehaviour:
   collisionRadius: 0.07
   isMelee: 0
   affectsPlayer: 0
-  bulletSprite: {fileID: 21300000, guid: 01d615563e878f64a84a9b092b2baccd, type: 3}
+  bulletSprite: {fileID: 21300000, guid: da393f58e6223c648a4696eee06cb4ca, type: 3}
+  explode: 1

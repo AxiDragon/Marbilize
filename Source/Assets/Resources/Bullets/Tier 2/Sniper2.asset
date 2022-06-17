@@ -17,9 +17,10 @@ MonoBehaviour:
   explosionForce: 2500
   spread: 0
   speed: 6
-  explosionWidth: 0.25
+  explosionWidth: 2
   recoil: 1
   collisionRadius: 0.03
   isMelee: 0
   affectsPlayer: 0
   bulletSprite: {fileID: 21300000, guid: 3b23539ca6706b445827bda291f451b1, type: 3}
+  explode: 1

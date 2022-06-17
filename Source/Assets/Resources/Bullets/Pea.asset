@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea0e774abc319d4da60adf937377080, type: 3}
   m_Name: Pea
   m_EditorClassIdentifier: 
-  bulletName: Pea
+  bulletName: Shot (0)
   tier: 0
   explosionForce: 2000
-  spread: 25
+  spread: 2
   speed: 2
   explosionWidth: 0.5
   recoil: 0.25

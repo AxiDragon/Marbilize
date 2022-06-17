@@ -52,7 +52,7 @@ public class BulletInventory : MonoBehaviour
         current = LoopCurrentBullet();
 
         if (bulletText)
-            bulletText.UpdateBulletText(roundBullets[current].bulletName, roundBullets[current].tier);
+            bulletText.UpdateBulletText(roundBullets[current], roundBullets[current].tier);
     }
 
     private int LoopCurrentBullet()
@@ -69,7 +69,7 @@ public class BulletInventory : MonoBehaviour
 
     public void FireBullet(InputAction.CallbackContext callback)
     {
-        if (!callback.action.WasPressedThisFrame() || fireBullet.fired)
+        if (!callback.action.WasPressedThisFrame() || fireBullet.fired || bulletInventoryUI.choosingBullet || bulletInventoryUI.paused)
             return;
 
         if (roundBullets.Count == 0)
@@ -83,9 +83,9 @@ public class BulletInventory : MonoBehaviour
             current = LoopCurrentBullet();
 
             if (roundBullets.Count == 0)
-                bulletText.UpdateBulletText("Pea", 0);
+                bulletText.UpdateBulletText(pea, 0);
             else
-                bulletText.UpdateBulletText(roundBullets[current].bulletName, roundBullets[current].tier);
+                bulletText.UpdateBulletText(roundBullets[current], roundBullets[current].tier);
         }
     }
 
@@ -146,6 +146,6 @@ public class BulletInventory : MonoBehaviour
             bullets.RemoveAt(random);
         }
 
-        bulletText.UpdateBulletText(roundBullets[0].bulletName, roundBullets[0].tier);
+        bulletText.UpdateBulletText(roundBullets[0], roundBullets[0].tier);
     }
 }

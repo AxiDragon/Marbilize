@@ -3,7 +3,9 @@ using UnityEngine;
 public class ItemStats : MonoBehaviour
 {
     public static int tokenBoxLimit = 2;
+    public static int hansLimit = 0;
     public static int bullets = 3;
+    public static float hansChance = 0.00f;
     public static float tokenBoxChance = 0.03f;
     public static float jumpMod = 1f;
     public static float speedMod = 1f;
@@ -17,6 +19,7 @@ public class ItemStats : MonoBehaviour
 
     private void Start()
     {
+        hansLimit = 0;
         tokenBoxLimit = 2;
         bullets = 3;
         tokenBoxChance = 0.03f;
