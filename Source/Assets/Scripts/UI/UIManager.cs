@@ -45,10 +45,8 @@ public class UIManager : MonoBehaviour
 
             for (int i = 0; i < gameObjects.Length; i++)
             {
-                print(i);
-                Vector3 newScale = Vector3.Lerp(startScale[i], startScale[i] * 1.2f, Mathf.PingPong(timer / (feedbackTime / 2f), 1f));
+                Vector3 newScale = Vector3.Lerp(startScale[i], startScale[i] * 1.5f, Mathf.PingPong(timer / (feedbackTime / 2f), 1f));
                 gameObjects[i].transform.localScale = newScale;
-
             }
 
             timer += Time.deltaTime;

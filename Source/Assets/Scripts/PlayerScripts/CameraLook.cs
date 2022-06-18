@@ -7,6 +7,7 @@ public class CameraLook : MonoBehaviour
 {
     public float sensitivity = 100f;
     float xRotation = 0f;
+    float startSensitivity;
 
     Transform playerBody;
     public GameObject head;
@@ -15,10 +16,12 @@ public class CameraLook : MonoBehaviour
 
     void Start()
     {
+        startSensitivity = sensitivity;
         startRot = head.transform.localEulerAngles;
         playerBody = transform.parent;
         ui = FindObjectOfType<BulletInventoryUI>();
         Cursor.lockState = CursorLockMode.Locked;
+        UpdateSensitivity(1f);
     }
 
     public void MoveCamera(InputAction.CallbackContext callback)
@@ -33,5 +36,10 @@ public class CameraLook : MonoBehaviour
         playerBody.Rotate(Vector3.up * rotation.x);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         head.transform.localRotation = Quaternion.Euler(startRot.x + xRotation, startRot.y, startRot.z);
+    }
+
+    public void UpdateSensitivity(float value)
+    {
+        sensitivity = startSensitivity * (0.1f + value);
     }
 }

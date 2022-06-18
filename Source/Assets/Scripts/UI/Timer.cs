@@ -16,11 +16,14 @@ public class Timer : MonoBehaviour
 
             if (!countingDown)
                 StartCoroutine(SetTimer(timeLeft));
+
+            StartCoroutine(UIManager.Feedback(new GameObject[] { image.gameObject }, 0.2f, new Vector3[] { imageStartScale }));
         }
     }
 
     public float fullColorTime;
     Image image;
+    Vector3 imageStartScale;
     Color startColor;
     Color endColor = Color.gray;
     bool countingDown;
@@ -28,9 +31,13 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         image = GetComponentInChildren<Image>();
+        imageStartScale = image.transform.localScale;
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
         startColor = texts[0].color;
         StartCoroutine(SetTimer(timeLeft));
+
+        if (MenuButtons.tutorial)
+            timeLeft *= 3f;
     }
 
     public void GetTime(float increment)
@@ -40,7 +47,7 @@ public class Timer : MonoBehaviour
 
     public void GetClearZoneTime()
     {
-        TimeLeft += (2f + (8f - Mathf.Pow(LevelStats.Difficulty, 1f / 2.5f))) * ItemStats.shieldGainModifier;
+        TimeLeft += (3f + (8f - Mathf.Pow(LevelStats.Difficulty, 1f / 2.5f))) * ItemStats.shieldGainModifier;
     }
 
     public IEnumerator SetTimer(float targetTime)

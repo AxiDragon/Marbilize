@@ -30,12 +30,26 @@ public class FireBullet : MonoBehaviour
         
         Bullet bulletScript = shot.GetComponent<Bullet>();
 
-        bulletScript.AssignStats(bullet);
+        bulletScript.AssignStats(bullet, firingDirection * bullet.speed);
 
         shot.GetComponent<SphereCollider>().radius = bullet.collisionRadius;
+        
+        AudioSource audio = shot.GetComponent<AudioSource>();
+
+        audio.clip = bullet.audio;
+        audio.pitch = Random.Range(0.8f, 1.2f);
+
+        if (bullet.name == "Shot (0)")
+            audio.pitch *= 2f;
 
         if (bullet.isMelee)
-            bulletScript.Explode();
+        {
+            audio.volume /= 1.2f;
+            audio.Play();
+            StartCoroutine(DelayExplosion(bulletScript));
+        }
+        
+        audio.Play();
         
         shot.GetComponent<Rigidbody>().AddForce(firingDirection * bullet.speed, ForceMode.Impulse);
 
@@ -43,7 +57,7 @@ public class FireBullet : MonoBehaviour
         mat.SetTexture("_MainTex", bullet.bulletSprite.texture);
         mat.SetFloat("_Tier", bullet.tier);
 
-        StartCoroutine(movement.Recoil(Vector3.Scale(-firingDirection * bullet.recoil, new Vector3(1f, .3f, 1f))));
+        StartCoroutine(movement.Recoil(Vector3.Scale(-firingDirection * bullet.recoil, new Vector3(2f, .1f, 2f))));
     }
 
     IEnumerator Cooldown()
@@ -51,5 +65,11 @@ public class FireBullet : MonoBehaviour
         fired = true;
         yield return new WaitForSeconds(fireCooldown);
         fired = false;
+    }
+
+    IEnumerator DelayExplosion(Bullet bullet)
+    {
+        yield return new WaitForEndOfFrame();
+        bullet.Explode();
     }
 }

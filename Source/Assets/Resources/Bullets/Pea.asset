@@ -24,3 +24,4 @@ MonoBehaviour:
   affectsPlayer: 0
   bulletSprite: {fileID: 21300000, guid: 30ee41b0b81ad3749a720e8203522fb5, type: 3}
   explode: 0
+  audio: {fileID: 8300000, guid: 0020d4d62267b014b98eb3635f1340e6, type: 3}

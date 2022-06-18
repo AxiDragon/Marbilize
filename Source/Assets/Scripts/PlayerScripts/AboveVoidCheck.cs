@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class AboveVoidCheck : MonoBehaviour
 {
-    Health health;
     public static bool isInside = true;
 
-    private void Start()
-    {
-        health = FindObjectOfType<Health>();
-    }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
             isInside = true;

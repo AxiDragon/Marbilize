@@ -8,8 +8,9 @@ public class BaseCamp : MonoBehaviour
     GameObject player;
     float enterIntensity = 3000f;
     float exitIntensity = 500f;
-    [HideInInspector]
+    
     public bool lit = false;
+
 
     void Start()
     {
