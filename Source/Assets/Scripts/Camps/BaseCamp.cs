@@ -16,20 +16,17 @@ public class BaseCamp : MonoBehaviour
     {
         spotlight = GetComponent<Light>();
         player = GameObject.Find("Player");
-        print(name);
     }
 
     private void OnMouseOver()
     {
         if (Vector3.Distance(player.transform.position, transform.position) < 15f)
         {
-            print("a");
             lit = true;
             spotlight.intensity = enterIntensity;
         }
         else
         {
-            print("b");
             lit = false;
             spotlight.intensity = exitIntensity;
         }

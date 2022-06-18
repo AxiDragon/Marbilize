@@ -39,6 +39,8 @@ public class GenerateZone : MonoBehaviour
             portalTriggered = true;
             SpawnZone();
             spawnNewZone.Invoke();
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            rb.velocity = Vector3.Scale(rb.velocity, new Vector3(1f, 0f, 1f));
         }
     }
 

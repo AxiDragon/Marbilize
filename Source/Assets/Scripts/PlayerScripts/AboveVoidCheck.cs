@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class AboveVoidCheck : MonoBehaviour
 {
-    Health health;
     public static bool isInside = true;
-
-    private void Start()
-    {
-        health = FindObjectOfType<Health>();
-    }
 
     private void OnTriggerStay(Collider other)
     {

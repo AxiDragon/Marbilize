@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletName: Snipe (2)
   tier: 2
-  explosionForce: 2500
+  explosionForce: 250000
   spread: 0
   speed: 6
-  explosionWidth: 2
+  explosionWidth: 3
   recoil: 1
   collisionRadius: 0.03
   isMelee: 0

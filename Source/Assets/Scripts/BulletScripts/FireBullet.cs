@@ -30,7 +30,7 @@ public class FireBullet : MonoBehaviour
         
         Bullet bulletScript = shot.GetComponent<Bullet>();
 
-        bulletScript.AssignStats(bullet);
+        bulletScript.AssignStats(bullet, firingDirection * bullet.speed);
 
         shot.GetComponent<SphereCollider>().radius = bullet.collisionRadius;
         
@@ -57,7 +57,7 @@ public class FireBullet : MonoBehaviour
         mat.SetTexture("_MainTex", bullet.bulletSprite.texture);
         mat.SetFloat("_Tier", bullet.tier);
 
-        StartCoroutine(movement.Recoil(Vector3.Scale(-firingDirection * bullet.recoil, new Vector3(1f, .3f, 1f))));
+        StartCoroutine(movement.Recoil(Vector3.Scale(-firingDirection * bullet.recoil, new Vector3(2f, .1f, 2f))));
     }
 
     IEnumerator Cooldown()

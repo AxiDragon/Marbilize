@@ -18,7 +18,7 @@ MonoBehaviour:
   spread: 12
   speed: 8
   explosionWidth: 1
-  recoil: 12
+  recoil: 36
   collisionRadius: 0.07
   isMelee: 0
   affectsPlayer: 0

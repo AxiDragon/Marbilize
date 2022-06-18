@@ -5,10 +5,18 @@ using UnityEngine;
 public class RandomizeAudio : MonoBehaviour
 {
     AudioSource audioSource;
+    float startPitch, startVolume;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.pitch = audioSource.pitch * Random.Range(0.8f, 1.2f);
-        audioSource.volume = audioSource.volume * Random.Range(0.8f, 1.2f);
+        startPitch = audioSource.pitch;
+        startVolume = audioSource.volume;
+        Randomize();
+    }
+    public void Randomize()
+    {
+        audioSource.pitch = startPitch * Random.Range(0.8f, 1.2f);
+        audioSource.volume = startVolume * Random.Range(0.8f, 1.2f);
     }
 }
