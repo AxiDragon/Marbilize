@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     Color startColor;
     Color endColor = Color.gray;
     Vector3 imageStartScale, textStartScale;
+    AudioSource ost;
 
     bool healthUp = false;
     bool beating = false;
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
     {
         health = maxHealth;
 
+        ost = GameObject.Find("Player").GetComponent<AudioSource>();
         timer = FindObjectOfType<Timer>();
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
         image = GetComponentInChildren<Image>();
@@ -58,6 +60,7 @@ public class Health : MonoBehaviour
     {
         health -= Time.deltaTime * rate;
         Color color = Color.Lerp(endColor, startColor, health / maxHealth);
+        ost.volume = Mathf.Lerp(0f, 0.5f, health / maxHealth);
 
         TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
 

@@ -48,7 +48,10 @@ public class BulletShop : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && baseCamp.lit)
+        {
+            print("a");
             ChooseBullet();
+        }
     }
 
     void ChooseBullet()

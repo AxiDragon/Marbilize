@@ -16,6 +16,7 @@ public class GenerateZone : MonoBehaviour
     ScoreManager scoreManager;
     BulletInventory bulletInventory;
     Timer timer;
+    AudioSource audioSource;
     bool portalTriggered = false;
 
     private void Start()
@@ -24,6 +25,7 @@ public class GenerateZone : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
         timer = FindObjectOfType<Timer>();
         bulletInventory = FindObjectOfType<BulletInventory>();
+        audioSource = GetComponent<AudioSource>();
 
         spawnNewZone.AddListener(scoreManager.UpdateScore);
         spawnNewZone.AddListener(timer.GetClearZoneTime);
@@ -47,11 +49,14 @@ public class GenerateZone : MonoBehaviour
         GameObject instance = LevelStats.ZonesCompleted % LevelStats.zonesPerArea == 0 ? 
             camps[GetRandomCamp()] : zones[Random.Range(0, zones.Length)];
 
+        audioSource.Play();
         Vector3 location = LevelStats.ZonesCompleted * offset;
         GameObject newGameObject = Instantiate(instance, location, Quaternion.Euler(Vector3.up * -180f));
         playerRespawn.UpdateIncrement(offset.y / 1.1f);
         playerRespawn.UpdateRespawnPoint(newGameObject.transform.Find("StartPosition").transform);
         playerRespawn.RespawnPlayer();
+
+        AboveVoidCheck.isInside = true;
     }
 
     int GetRandomCamp()

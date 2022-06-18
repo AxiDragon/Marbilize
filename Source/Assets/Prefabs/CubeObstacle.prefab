@@ -127,5 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27fcbc7e9c52b3f46be7d8738f942a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tokenObstacle: {fileID: 11400000, guid: 6f4276ffbb57eb340b58d3035b59d16e, type: 2}
   token: {fileID: 8344294460528306400, guid: fa7249b073bb51b4695445093d27d454, type: 3}
   explosion: {fileID: 3277653349990644565, guid: 1ba5235068c72c14b8c26af5fd41d849, type: 3}
+  tutorialBox: 0

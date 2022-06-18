@@ -12,7 +12,7 @@ public class AboveVoidCheck : MonoBehaviour
         health = FindObjectOfType<Health>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
             isInside = true;

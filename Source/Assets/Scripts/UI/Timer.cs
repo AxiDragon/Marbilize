@@ -40,7 +40,7 @@ public class Timer : MonoBehaviour
 
     public void GetClearZoneTime()
     {
-        TimeLeft += (2f + (8f - Mathf.Pow(LevelStats.Difficulty, 1f / 2.5f))) * ItemStats.shieldGainModifier;
+        TimeLeft += (3f + (8f - Mathf.Pow(LevelStats.Difficulty, 1f / 2.5f))) * ItemStats.shieldGainModifier;
     }
 
     public IEnumerator SetTimer(float targetTime)

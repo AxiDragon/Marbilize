@@ -5,12 +5,19 @@ using UnityEngine;
 public class ObstacleInstance : MonoBehaviour
 {
     Obstacle obs;
+    public Obstacle tokenObstacle;
     Rigidbody rb;
     public GameObject token, explosion;
+    public bool tutorialBox;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
+        if (tutorialBox)
+        {
+            AssignObstacleStats(tokenObstacle);
+        }
     }
 
     private void Update()

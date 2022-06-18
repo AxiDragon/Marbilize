@@ -20,6 +20,11 @@ public class GameOver : MonoBehaviour
         }
     }
 
+    public void StartGameOver()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public IEnumerator GameOvered()
     {
         for (int i = 0; i < gameObjects.Count; i++)
@@ -43,6 +48,6 @@ public class GameOver : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
     }
 }

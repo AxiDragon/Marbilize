@@ -23,3 +23,5 @@ MonoBehaviour:
   isMelee: 1
   affectsPlayer: 0
   bulletSprite: {fileID: 21300000, guid: 885776e1a337a35458887d21d539d016, type: 3}
+  explode: 1
+  audio: {fileID: 8300000, guid: 51380bcfb7d15d64b95ab067409d8c59, type: 3}

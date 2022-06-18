@@ -33,9 +33,23 @@ public class FireBullet : MonoBehaviour
         bulletScript.AssignStats(bullet);
 
         shot.GetComponent<SphereCollider>().radius = bullet.collisionRadius;
+        
+        AudioSource audio = shot.GetComponent<AudioSource>();
+
+        audio.clip = bullet.audio;
+        audio.pitch = Random.Range(0.8f, 1.2f);
+
+        if (bullet.name == "Shot (0)")
+            audio.pitch *= 2f;
 
         if (bullet.isMelee)
-            bulletScript.Explode();
+        {
+            audio.volume /= 1.2f;
+            audio.Play();
+            StartCoroutine(DelayExplosion(bulletScript));
+        }
+        
+        audio.Play();
         
         shot.GetComponent<Rigidbody>().AddForce(firingDirection * bullet.speed, ForceMode.Impulse);
 
@@ -51,5 +65,11 @@ public class FireBullet : MonoBehaviour
         fired = true;
         yield return new WaitForSeconds(fireCooldown);
         fired = false;
+    }
+
+    IEnumerator DelayExplosion(Bullet bullet)
+    {
+        yield return new WaitForEndOfFrame();
+        bullet.Explode();
     }
 }

@@ -12,4 +12,5 @@ public class ScriptableBullet : ScriptableObject
     public bool affectsPlayer;
     public Sprite bulletSprite;
     public bool explode = true;
+    public AudioClip audio;
 }
