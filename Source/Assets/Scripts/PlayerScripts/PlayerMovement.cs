@@ -12,11 +12,14 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveVector, dashMove, recoilMove;
     public float speed, jumpForce, groundDistance, dashCooldown, dashForce, dashDuration, recoilDuration;
+    float coyoteTime = .5f;
+    float coyoteTimeCounter;
     bool isGrounded;
     bool canDash = true;
 
     void Start()
     {
+        coyoteTimeCounter = coyoteTime;
         controller = new PlayerController();
         rb = GetComponent<Rigidbody>();
 
@@ -32,6 +35,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        isGrounded = Physics.CheckSphere(sphereCheckPos.position, groundDistance, groundMask);
+
+        if (isGrounded)
+            coyoteTimeCounter = coyoteTime;
+        else
+            coyoteTimeCounter -= Time.deltaTime;
+
         Vector3 movement = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * moveVector * speed * ItemStats.speedMod / 2f;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z) + dashMove + recoilMove;
         rb.angularVelocity = Vector3.zero;
@@ -39,9 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext callback)
     {
-        isGrounded = Physics.CheckSphere(sphereCheckPos.position, groundDistance, groundMask);
 
-        if (isGrounded && callback.action.WasPerformedThisFrame())
+        if (coyoteTimeCounter > 0f && callback.action.WasPerformedThisFrame())
             rb.AddForce(Vector3.up * jumpForce * ItemStats.jumpMod, ForceMode.VelocityChange);
     }
 
