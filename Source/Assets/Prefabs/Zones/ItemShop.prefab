@@ -445,12 +445,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 709c59e49ea6fc043a7bfda7db6d7a08, type: 2}
   - {fileID: 11400000, guid: 758e480da43a95c4db9d5608cf42aa0b, type: 2}
   - {fileID: 11400000, guid: 7dfaa0d7de532c5429446d3d46694022, type: 2}
+  - {fileID: 11400000, guid: 901f59fc1089de745a6c5899b594baa4, type: 2}
   moneyItem:
   - {fileID: 11400000, guid: d967daf138baa8b4ca560fdd50ee4268, type: 2}
   - {fileID: 11400000, guid: 89aa36fee8297d646ad383e577a0a756, type: 2}
   otherItem:
   - {fileID: 11400000, guid: cda550335b92e9d4f9c2683d97e519f9, type: 2}
   - {fileID: 11400000, guid: 1964af50f710c134b841396d4a7fb7df, type: 2}
+  - {fileID: 11400000, guid: 3ef38435513e6c240ad11d182ae8e3fc, type: 2}
   itemSprite: {fileID: 8930725844906917317}
   itemName: {fileID: 3952512196595203337}
   itemDescription: {fileID: 2452674921248665769}

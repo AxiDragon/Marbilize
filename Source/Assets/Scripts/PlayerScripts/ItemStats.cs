@@ -9,6 +9,7 @@ public class ItemStats : MonoBehaviour
     public static float tokenBoxChance = 0.03f;
     public static float jumpMod = 1f;
     public static float speedMod = 1f;
+    public static float dashMod = 1f;
     public static float explosionWidthMod = 1f;
     public static float explosionPowerMod = 1f;
     public static float recoilMod = 1f;
@@ -23,8 +24,9 @@ public class ItemStats : MonoBehaviour
         tokenBoxLimit = 2;
         bullets = 3;
         hansChance = 0f;
-        tokenBoxChance = 0.03f; 
+        tokenBoxChance = 0.03f;
         jumpMod = 1f;
+        dashMod = 1f;
         speedMod = 1f;
         explosionWidthMod = 1f;
         explosionPowerMod = 1f;
@@ -80,6 +82,12 @@ public class ItemStats : MonoBehaviour
             case "HANS":
                 hansChance += 0.05f;
                 hansLimit += 5;
+                break;
+            case "RUFRAN":
+                rb.transform.localScale *= 1.3f;
+                break;
+            case "MILO":
+                dashMod *= 1.3f;
                 break;
         }
     }

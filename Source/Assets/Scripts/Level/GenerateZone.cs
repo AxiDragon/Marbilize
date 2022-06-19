@@ -34,13 +34,18 @@ public class GenerateZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !portalTriggered)
+        if (other.CompareTag("Player") && !portalTriggered)
         {
             portalTriggered = true;
             SpawnZone();
             spawnNewZone.Invoke();
             Rigidbody rb = other.GetComponent<Rigidbody>();
             rb.velocity = Vector3.Scale(rb.velocity, new Vector3(1f, 0f, 1f));
+        }
+        if (other.CompareTag("Obstacle"))
+        {
+            if (other.TryGetComponent(out ObstacleInstance obstacle))
+                obstacle.Explode();
         }
     }
 
@@ -70,7 +75,6 @@ public class GenerateZone : MonoBehaviour
         }
 
         previousCamp = randomCamp;
-
         return randomCamp;
     }
 }

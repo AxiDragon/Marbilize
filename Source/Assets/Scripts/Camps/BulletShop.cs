@@ -20,19 +20,19 @@ public class BulletShop : MonoBehaviour
         inventoryUI = FindObjectOfType<BulletInventoryUI>();
 
         bulletArray = FindObjectOfType<BulletArray>();
-        int randomTierNumber = Random.Range(0, 9);
+        int randomTierNumber = Random.Range(0, 10);
         int randomTier;
 
         switch (randomTierNumber)
         {
             case 9:
-                randomTier = 3;
-                break;
-            case int number when number >= 6:
                 randomTier = 2;
                 break;
-            default:
+            case int number when number >= 6:
                 randomTier = 1;
+                break;
+            default:
+                randomTier = 0;
                 break;
         }
 

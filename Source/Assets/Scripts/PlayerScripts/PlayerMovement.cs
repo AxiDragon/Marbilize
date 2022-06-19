@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * moveVector * speed * ItemStats.speedMod / 2f;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z) + dashMove + recoilMove;
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 50f);
         rb.angularVelocity = Vector3.zero;
     }
 
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canDash && callback.action.WasPerformedThisFrame())
         {
-            StartCoroutine(Dash(transform.forward * speed * dashForce));
+            StartCoroutine(Dash(transform.forward * speed * dashForce * ItemStats.dashMod));
         }
     }
 

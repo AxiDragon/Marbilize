@@ -17,7 +17,8 @@ public class Timer : MonoBehaviour
             if (!countingDown)
                 StartCoroutine(SetTimer(timeLeft));
 
-            StartCoroutine(UIManager.Feedback(new GameObject[] { image.gameObject }, 0.2f, new Vector3[] { imageStartScale }));
+            StartCoroutine(UIManager.Feedback(new GameObject[] { image.gameObject }, 0.2f, 
+                new Vector3[] { imageStartScale }));
         }
     }
 

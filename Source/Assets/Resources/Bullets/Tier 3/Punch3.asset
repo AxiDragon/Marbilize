@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletName: Punch (3)
   tier: 3
-  explosionForce: 24000
+  explosionForce: 20000
   spread: 9
   speed: 6
-  explosionWidth: 12
+  explosionWidth: 10
   recoil: 6
   collisionRadius: 0.15
   isMelee: 1

@@ -17,7 +17,7 @@ MonoBehaviour:
   explosionForce: 250000
   spread: 0
   speed: 6
-  explosionWidth: 3
+  explosionWidth: 4
   recoil: 1
   collisionRadius: 0.03
   isMelee: 0
